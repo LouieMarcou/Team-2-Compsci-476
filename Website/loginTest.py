@@ -15,7 +15,7 @@ access_token = access_token = Client.get_access_token(username=os.getenv('user')
 
 client = Client(access_token=access_token)
 
-print(client.my_profile)
+print(client)
 
 #def callback(transactions_list):
 #    for transaction in transactions_list:
