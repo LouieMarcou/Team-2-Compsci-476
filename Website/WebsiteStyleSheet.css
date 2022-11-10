@@ -82,15 +82,15 @@
 	.pictureColums
 	{
 		column-count: 3;
-		column-gap: 35px;
+		column-gap: 0px;
 	}
 	
 	.howToHelpPicture
 	{
-		width: auto;
+		width: 530px;
 		height: 400px;
-		margin-right:40px;
-		margin-left:15px;
+		margin-right:0px;
+		margin-left:50px;
 		padding-bottom:10px; 
 		background: #008;
 		color: #fff;
