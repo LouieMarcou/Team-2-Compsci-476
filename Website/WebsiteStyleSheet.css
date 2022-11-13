@@ -3,6 +3,7 @@
 	{
 		display:block;
 		position: absolute;
+
 	}
 	header 
 	{
@@ -16,16 +17,22 @@
 	body, #wrapper
 	{
 		width: 100%;
+		background-color:rgb(245,245,220);
 	}
 
 	.links
 	{
 		/*font-size: 10vw;*/
+		position:fixed;
+		background-color:LightGrey;
+		width:100%;
+		white-space: nowrap;
+		overflow-x: auto;
 	}
 	
 	.main
 	{
-		padding-top: 100px;
+		margin-top: 150px;
 		font-size: 4em;
 	}
 	
@@ -126,4 +133,11 @@
 		margin-left:400px;
 		margin-right:200px;
 		margin-top:50px;
+	}
+	
+	.map
+	{
+		margin-right:50px;
+		margin-left:50px;
+		margin-bottom:50px;
 	}
