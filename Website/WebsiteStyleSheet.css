@@ -21,6 +21,11 @@
 	.links
 	{
 		/*font-size: 10vw;*/
+		position:fixed;
+		background-color:LightGrey;
+		width:100%;
+		white-space: nowrap;
+		overflow-x: auto;
 	}
 	
 	.main
