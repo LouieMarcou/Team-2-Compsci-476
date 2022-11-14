@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Corner Side Help</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+		<style>
+		html
+		{
+			display:block;
+		}
+		header 
+		{
+            font-size:3em;
+			position:sticky;
+			display: flex;
+			flex: 1;
+			align-items: center;
+        }
+		
+		body, #wrapper
+		{
+			width: 100%;
+		}
+
+		.links
+		{
+			/*font-size: 10vw;*/
+		}
+		
+		.main
+		{
+			padding-top: 100px;
+			font-size: 4em;
+		}
+		
+		img
+		{
+			display:block;
+		}
+		
+		p
+		{
+			font-size:0.5em;
+		}
+		
+		.factText
+		{
+			font-size: 2em;
+			margin-left:50px;
+			margin-right:50px;
+			padding-top: 100px;
+			clear:right;
+		}
+		
+		.button 
+		{
+			padding: 15px 32px;
+			display: inline-block;
+			font-size: 16px;
+			margin:4px 800px;
+			cursor: pointer;
+		}
+		span
+		{
+			padding-top:300px;
+			padding-left:300px;
+			display:inline-block;
+			text-align:center;
+		}
+		
+		.howToHelpContainer
+		{
+			text-align:center;
+			font-size:3em;
+			margin-left:50px;
+		}
+		
+		.howToHelpPicture
+		{
+			float:left;
+			margin-right:75px;
+			padding-bottom:10px; 
+			background: #008;
+			color: #fff;
+		}
+		
+		.howToHelpPictureLast
+		{
+			float:left;
+			margin-right:10px;
+			padding-bottom:10px; 
+			background: #008;
+			color: #fff;
+		}
+		
+		.contact
+		{
+			clear:left;
+			display:grid;
+			grid-template-columns: auto auto auto auto;
+			grid-gap: 10px;
+			margin-top:150px;
+			margin-bottom:50px;
+			margin-right:50px;
+			margin-left:50px;
+			background: #009;
+			color: #fff;
+		}
+		
+		.contactUs
+		{
+			font-size: 2em;
+			margin-left:400px;
+			margin-right:200px;
+			margin-top:50px;
+		}
+		
+		</style>
+	</head>
+	
+	<body>
+	<header>
+	</header>
+	
+	<div class="links">
+		<h1> 
+			Corner Side Help
+			<a href="Index.html" style="padding-left:425px; font-size:3vw"> Home</a>
+			<a href="Plans&Pricing.html" style="font-size:3vw"> Plans & Pricing</a>
+			<a href="Donate.html" style="font-size:3vw"> Donate</a>
+			<a href="LogIn.html" style="font-size:3vw"> Log In</a>
+		</h1>
+	</div>
+	
+	<div class="main">
+		<img src="Pictures/HomelessPicture.png" alt="Picture" style="margin-left:auto; float:right;">
+		<span>
+			<h1>Corner Side help</h1>
+			<p>Just people helping people here.</p>
+		</span>
+	</div>
+	<div class="factText">
+		<img src="Pictures/HomelessPicture2.png" alt="Picture 2">
+		<p style="margin-left:250px; margin-right:250px; margin-top:50px; margin-bottom:50px;">
+			Did you know that more than 500,000 thousand people are homeless in America alone. 
+			Approximately around 35% of these people abuse alcohol and other substances. 
+			This causes a dilemma. It creates the question of "Do I give them money or are they just going to use it for drugs." 
+			Through Corner Side Help we are allowed to answer this question for you. 
+			We have created a card that allows these people to accept your donations through this website and only allows them to be used at fast food chains and some local restaurants. 
+			Thus, providing a meal for those most in need without the fear of the money being misused.
+		</p>
+		<button type="button" class="button">How to Help</button>
+
+	</div>
+	
+	
+	<div class="howToHelpContainer">
+		<h1>How we help</h1>
+		<p>Paving the way to a better tomorrow</p>
+		<div class="howToHelpPicture">
+			<img src="Pictures/HowToHelpPicture1.png" alt="HowToHelp1">
+			<p>Distribute and create</p>
+			<p>personalized Corner Cards</p>
+		</div>
+		<div class="howToHelpPicture">
+			<img src="Pictures/HowToHelpPicture2.png" alt="HowToHelp2">
+			<p>Load donations onto card</p>
+		</div>
+		<div class="howToHelpPictureLast">
+			<img src="Pictures/HowToHelpPicture3.png" alt="HowToHelp3">
+			<p>Provide a meal for those in need</p>
+		</div>
+	
+	</div>
+	
+	<div class="contact">
+		<div class="contactUs">
+			<p style="font-size:1.5em; text-align:center;">Contact us</p>
+			<p>500 Terry Francois Street San Francisco, CA 94158</p>
+		</div>
+		<form style="margin-left:200px; margin-top:50px;" class="contact">
+			<label for="fullName" style="grid-area: 1 / 1 / 1 / 1">Name*</label>
+			<input type="text" id="fullName" name="fullName"  placeholder="Enter your name" style="grid-area: 2 / 1 / 2 / 1;" required>
+		
+			<label for="address" style="grid-area: 3 / 1 / 3 / 1">Address</label>
+			<input type="text" id="address" name="address" placeholder="Enter your address" style="grid-area: 4 / 1 / 4 / 1">
+			
+
+			<label for="email" style="grid-area: 5 / 1 / 5 / 1">Email Address</label>
+			<input type="text" id="electronicMail" name="email" placeholder="Enter your email address" style="grid-area: 6 / 1 / 6 / 1">
+
+			<label for="phone" style="grid-area: 5 / 2 / 5 / 2">Phone</label>
+			<input type="text" id="phone" name="phone" placeholder="Enter your phone number" style="grid-area: 6 / 2 / 6 / 2">
+			
+			<label for="subject" style="grid-area: 7 / 1 / 7 / 1">Subject</label>
+			<input type="text" id="subject" name="subject" placeholder="Type the subject" style="grid-area: 8 / 1 / 8 / 1">
+
+			<label for="message" style="grid-area: 9 / 1 / 9 / 1">Message</label>
+			<input type="text" id="message" name="message" placeholder="Type your message here..." style="grid-area: 10 / 1 / 10 / 1; padding-right: 100px; padding-bottom:100px;">
+
+
+			<input type="submit" style="grid-area: 11 / 1 / 11 / 1">
+		</form>
+	
+	</div>
+	</body>
+	
+</html>
