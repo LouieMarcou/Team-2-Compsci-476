@@ -1,0 +1,129 @@
+
+	html
+	{
+		display:block;
+		position: absolute;
+	}
+	header 
+	{
+		font-size:3em;
+		position:sticky;
+		display: flex;
+		flex: 1;
+		align-items: center;
+	}
+	
+	body, #wrapper
+	{
+		width: 100%;
+	}
+
+	.links
+	{
+		/*font-size: 10vw;*/
+	}
+	
+	.main
+	{
+		padding-top: 100px;
+		font-size: 4em;
+	}
+	
+	.intro
+	{
+		
+		padding-top:300px;
+		padding-left:300px;
+	}
+	
+	img
+	{
+		display:block;
+	}
+	
+	p
+	{
+		font-size:0.5em;
+	}
+	
+	.factText
+	{
+		font-size: 2em;
+		margin-left:50px;
+		margin-right:50px;
+		padding-top: 100px;
+		clear:right;
+	}
+	
+	.button 
+	{
+		padding: 15px 32px;
+		display: inline-block;
+		font-size: 16px;
+		margin:4px 800px;
+		cursor: pointer;
+	}
+	
+	span
+	{
+		/*padding-top:300px;
+		padding-left:300px;*/
+		display:block;
+		text-align:center;
+	}
+	
+	.howToHelpContainer
+	{
+		text-align:center;
+		font-size:3em;
+		/*margin-left:50px;*/
+	}
+	
+	.pictureColums
+	{
+		column-count: 3;
+		column-gap: 35px;
+	}
+	
+	.howToHelpPicture
+	{
+		width: auto;
+		height: 400px;
+		margin-right:40px;
+		margin-left:15px;
+		padding-bottom:10px; 
+		background: #008;
+		color: #fff;
+		
+	}
+	
+	.howToHelpPictureLast
+	{
+		float:left;
+		margin-right:10px;
+		padding-bottom:10px; 
+		background: #008;
+		color: #fff;
+	}
+	
+	.contact
+	{
+		clear:left;
+		display:grid;
+		grid-template-columns: auto auto auto auto;
+		grid-gap: 10px;
+		margin-top:150px;
+		margin-bottom:50px;
+		margin-right:50px;
+		margin-left:50px;
+		background: #009;
+		color: #fff;
+	}
+	
+	.contactUs
+	{
+		font-size: 2em;
+		margin-left:400px;
+		margin-right:200px;
+		margin-top:50px;
+	}
