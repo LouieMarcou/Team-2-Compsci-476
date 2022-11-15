@@ -10,19 +10,32 @@
 	</head>
 		
 	<body>
-		<div class="links">
-		<h1> 
+		<div>
+		<h1 id="login-links"> 
 			Corner Side Help
-			<a href="Index.html" style="padding-left:425px; font-size:3vw"> Home</a>
-			<a href="Sponsors.html" style="font-size:3vw"> Sponsors</a>
-			<a href="Donate.html" style="font-size:3vw"> Donate</a>
-			<a href="LogIn.html" style="font-size:3vw"> Log In</a>
+			<a href="Index.html" style="padding-left:425px; font-size:1.1vw"> Home</a>
+			<a href="Sponsors.html" style="font-size:1.1vw"> Sponsors</a>
+			<a href="Donate.html" style="font-size:1.1vw"> Donate</a>
+			<a href="LogIn.html" style="font-size:1.1vw"> Log In</a>
 		</h1>
 	</div>
-	
-	<div>
-		<form method="" action="" class="">
-			<h3>Member Login</h3>
+	<br>
+	<br>
+	<div id="div-login">
+		<form method="" action="" class="login">
+			<h3 id="login-title">Member Login</h3>
+			<input type = "text" class = "form-control" name="username"
+			placeholder="username" required autofocus><br>
+			<input type = "password" class = "form-control" name = "password"
+			placeholder="password" required><br>
+			<p class="button-row"><button class="btn btn-log btn-primary btn-block" type="submit" name="login">Login</button></p>
+		</form>
+	</div>
+	<br>
+	<br>
+	<div id="div-login">
+		<form method="" action="" class="login">
+			<h3 id="login-title">Donor Login</h3>
 			<input type = "text" class = "form-control" name="username"
 			placeholder="username" required autofocus><br>
 			<input type = "password" class = "form-control" name = "password"

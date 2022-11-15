@@ -21,6 +21,11 @@
 	.links
 	{
 		/*font-size: 10vw;*/
+		position:fixed;
+		background-color:LightGrey;
+		width:100%;
+		white-space: nowrap;
+		overflow-x: auto;
 	}
 	
 	.main
@@ -127,3 +132,24 @@
 		margin-right:200px;
 		margin-top:50px;
 	}
+	.login{
+		padding: 70px 0;
+		border: 3px solid whitesmoke;
+		text-align: center;
+		width: 35%;
+		margin-left: 600px;
+	}
+	#login-title{
+		text-align: center;
+	}
+	#div-login{
+		padding: 70px 0;
+		text-align: center;
+	}
+	#login-links{
+		margin-left: 500px
+	}
+
+
+
+
