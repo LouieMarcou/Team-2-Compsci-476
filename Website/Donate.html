@@ -6,32 +6,181 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+		<script src="https://js.braintreegateway.com/web/3.77.0/js/client.min.js"></script>
+		<script src="https://js.braintreegateway.com/web/3.77.0/js/venmo.min.js"></script>
+		<script src="https://js.braintreegateway.com/web/3.77.0/js/data-collector.min.js"></script>
+		<script src="processDonation.js"></script>
+		
+		<script
+  		data-main="main.js"
+  		src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.1/require.min.js"></script>
+		<style>
+			
+		html
+		{
+			display:block;
+		}
+		header 
+		{
+            font-size:3em;
+			position:sticky;
+			display: flex;
+			flex: 1;
+			align-items: center;
+        }
+		
+		body, #wrapper
+		{
+			width: 100%;
+		}
+
+		.links
+		{
+			/*font-size: 10vw;*/
+		}
+		
+		.main
+		{
+			padding-top: 100px;
+			font-size: 4em;
+		}
+		
+		img
+		{
+			display:block;
+		}
+		
+		p
+		{
+			font-size:0.5em;
+		}
+		
+		.factText
+		{
+			font-size: 2em;
+			margin-left:50px;
+			margin-right:50px;
+			padding-top: 100px;
+			clear:right;
+		}
+		
+		.button 
+		{
+			padding: 15px 32px;
+			display: inline-block;
+			font-size: 16px;
+			margin:4px 800px;
+			cursor: pointer;
+		}
+		span
+		{
+			padding-top:300px;
+			padding-left:300px;
+			display:inline-block;
+			text-align:center;
+		}
+		
+		.howToHelpContainer
+		{
+			text-align:center;
+			font-size:3em;
+			margin-left:50px;
+		}
+		
+		.howToHelpPicture
+		{
+			float:left;
+			margin-right:75px;
+			padding-bottom:10px; 
+			background: #008;
+			color: #fff;
+		}
+		
+		.howToHelpPictureLast
+		{
+			float:left;
+			margin-right:10px;
+			padding-bottom:10px; 
+			background: #008;
+			color: #fff;
+		}
+		
+		.contact
+		{
+			clear:left;
+			display:grid;
+			grid-template-columns: auto auto auto auto;
+			grid-gap: 10px;
+			margin-top:150px;
+			margin-bottom:50px;
+			margin-right:50px;
+			margin-left:50px;
+			background: #009;
+			color: #fff;
+		}
+		
+		.contactUs
+		{
+			font-size: 2em;
+			margin-left:400px;
+			margin-right:200px;
+			margin-top:50px;
+		}
+		
+		
+		P {text-align: center;}
+		div {text-align: center; margin-bottom: 10px;}
+		label {display: inline-block; text-align: center; width: 300px;}
+		input {display: inline-block; text-align: center; width: 250px;}
+		
+
+		
+		
+		
+		</style>
 	</head>
 		
 	<body>
+
 		<div class="links">
 		<h1> 
 			Corner Side Help
 			<a href="Index.html" style="padding-left:425px; font-size:3vw"> Home</a>
-			<a href="Sponsors.html" style="font-size:3vw"> Sponsors</a>
+			<a href="Plans&Pricing.html" style="font-size:3vw"> Plans & Pricing</a>
 			<a href="Donate.html" style="font-size:3vw"> Donate</a>
 			<a href="LogIn.html" style="font-size:3vw"> Log In</a>
 		</h1>
 
-		<p style = "font-size:20px;">This page allows you to enter the ID of the person you are trying to donate to and using Venmo will transfer it to their account</p>
+		
 
-		<label for="userID">ID of Person to recieve donation:</label><br>
-  		<input type="text" id="userID" maxlength="5" size="10" value="0"><br>
-  		<label for="donation">Enter in the donation amount below:</label><br>
-  		<input type="text" id="donation" size="10" value="0"><br>
-		<p></p>
-		<p style = "font-size:20px;">If you have an account with use enter your username and password</p>
-		<label for="donor">Username:</label><br>
-		<input type="text" id="donor" size="10" value="Username"><br>
-		<label for="donorPass">Password:</label><br>
-		<input type="text" id="donorpass" size="10" value="Password"><br>
-		<br>
+
+		<p style = "font-size:24px;">This page allows you to enter the ID of the person you are trying to donate to and using Venmo will transfer it to their account</p>
+		
+		<div>
+		<label for="userID">ID of Person to recieve donation:</label>
+  		<input type="text" id="userID" maxlength="5" size="30"  placeholder="Enter in ID">
+		</div>
+
+		<div>
+  		<label for="donation">Enter in the donation amount below:</label>
+  		<input type="text" id="donation" size="30" placeholder="Enter in amount">
+		</div>
+		  
+
+		<p style = "font-size:24px;">If you have an account with use enter your username and password</p>
+		<div>
+		<label for="donor">Username:</label>
+		<input type="text" id="donor" size="30" placeholder=" Enter your username">
+		</div>
+
+		<div>
+		<label for="donorPass">Password:</label>
+		<input type="text" id="donorpass" size="30" placeholder="Enter your password">
+		</div>
+	
 		<input type="submit" id = "venmo-button" value="Submit">
+		
+
 		
 	</div>
 	

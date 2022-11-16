@@ -1,4 +1,5 @@
 <?php
+
 require_once('vendor/autoload.php');
 
 $stripe = new \Stripe\StripeClient("sk_test_51M32h7CW4FUqp8zTkwPns6CMxp1eVC5m4kbCIPmevxQ8llDbBc8muDCRiizvn9168dXIBSvVhfnU1daWP5ZF8lsx00DQvuq3CW");
