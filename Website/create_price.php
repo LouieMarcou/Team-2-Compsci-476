@@ -11,7 +11,7 @@ $product = $stripe->products->create([
 echo "Success! Here is your starter subscription product id: " . $product->id . "\n";
 
 $price = $stripe->prices->create([
-  'unit_amount' => 1200,
+  'unit_amount' => 120,
   'currency' => 'usd',
   'recurring' => ['interval' => 'month'],
   'product' => $product['id'],
