@@ -16,6 +16,6 @@ $price = $stripe->prices->create([
   'recurring' => ['interval' => 'month'],
   'product' => $product['id'],
 ]);
-echo "Success! Here is your premium subscription price id: " . $price->id . "\n";
+echo "Success! Here is your premium subscription price id: " . $price->unit_amount . "\n";
 
 ?>

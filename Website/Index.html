@@ -52,16 +52,16 @@
 		<p>Paving the way to a better tomorrow</p>
 		<div class="pictureColums">
 			<span class="howToHelpPicture">
-				<img src="Pictures/HowToHelpPicture1.png" alt="HowToHelp1">
+				<img src="Pictures/HowToHelpPicture1.png" alt="HowToHelp1" style="width: 530px;">
 				<p>Distribute and create</p>
 				<p>personalized Corner Cards</p>
 			</span>
 			<span class="howToHelpPicture">
-				<img src="Pictures/HowToHelpPicture2.png" alt="HowToHelp2">
+				<img src="Pictures/HowToHelpPicture2.png" alt="HowToHelp2" style="width: 530px;">
 				<p>Load donations onto card</p>
 			</span>
 			<span class="howToHelpPicture">
-				<img src="Pictures/HowToHelpPicture3.png" alt="HowToHelp3">
+				<img src="Pictures/HowToHelpPicture3.png" alt="HowToHelp3" style="width: 530px;">
 				<p>Provide a meal for those in need</p>
 			</span>
 		</div>
@@ -72,7 +72,7 @@
 			<p style="font-size:1.5em; text-align:center;">Contact us</p>
 			<p>500 Terry Francois Street San Francisco, CA 94158</p>
 		</div>
-		<form style="margin-left:200px; margin-top:50px;" class="contact">
+		<form method="post" action= "SendEmail.php" style="margin-left:200px; margin-top:50px;" class="contact">
 			<label for="fullName" style="grid-area: 1 / 1 / 1 / 1">Name*</label>
 			<input type="text" id="fullName" name="fullName"  placeholder="Enter your name" style="grid-area: 2 / 1 / 2 / 1;" required>
 		
@@ -81,7 +81,7 @@
 			
 
 			<label for="email" style="grid-area: 5 / 1 / 5 / 1">Email Address</label>
-			<input type="text" id="electronicMail" name="email" placeholder="Enter your email address" style="grid-area: 6 / 1 / 6 / 1">
+			<input type="email" id="electronicMail" name="email" placeholder="Enter your email address" style="grid-area: 6 / 1 / 6 / 1">
 
 			<label for="phone" style="grid-area: 5 / 2 / 5 / 2">Phone</label>
 			<input type="text" id="phone" name="phone" placeholder="Enter your phone number" style="grid-area: 6 / 2 / 6 / 2">
@@ -97,6 +97,11 @@
 		</form>
 	
 	</div>
+	
+	<div class="map">
+		<iframe src="https://www.google.com/maps/d/embed?mid=115IsXm3uYsKdT998NzkRqxhmpi8&hl=en&ehbc=2E312F" width="100%" height="900"></iframe>
+	</div>
+	
 	</body>
 	
 </html>
