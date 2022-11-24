@@ -139,6 +139,18 @@
 		width: 35%;
 		margin-left: 600px;
 	}
+
+	.donateInfo{
+		text-align: center; margin-bottom: 10px;
+	}
+
+	.donateText{
+		padding-top: 100px;
+		padding-left: 100px;
+		font-size:24px;
+		text-align: center;
+	}
+
 	#login-title{
 		text-align: center;
 	}
