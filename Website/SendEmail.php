@@ -3,14 +3,22 @@ $message=$_POST["message"];
 $subject=$_POST["subject"];
 $sender=$_POST["email"];
 $name=$_POST["fullName"];
-if($message)
+$recipent = "marcoulouie@gmail.com";
+
+function sendEmail()
 {
-	mail("your@email.address" , $subject, 
-	
-	$message, $sender);
+	if($message)
+	{
+		mail($recipent , $subject, 
+		
+		$message, $sender);
+	}
 }
 
+?>
+<?php
 
+	sendEmail();
 
 ?>
 <!-- endline -->
