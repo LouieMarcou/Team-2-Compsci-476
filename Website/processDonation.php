@@ -18,10 +18,10 @@
 				<img src="Pictures/CornerSide Logo Nov 16th (002).png" width="20%">
 			</span>
 			<span style="float:right; font-size:2vw; margin-right:25px;">
-				<a href="index.html">Home</a>
-				<a href="sponsors.html">Sponsors</a>
-				<a href="donate.html">Donate</a>
-				<a href="logIn.html">Log In</a>
+				<a href="Index.html">Home</a>
+				<a href="Sponsors.html">Sponsors</a>
+				<a href="Donate.html">Donate</a>
+				<a href="LogIn.html">Log In</a>
 			</span>
 		</div>
 
@@ -40,7 +40,7 @@ if (isset($_POST['userID'])) {
 }
 $donation = "";
 if (isset($_POST['donation'])) {
-	$donation = $_POST['donation'];
+	$donation = floatval($_POST['donation']);
 }
 $donor = "";
 if (isset($_POST['donor'])) {
@@ -68,6 +68,7 @@ if ($userID === '' || $donation === '' || $donor === '' || $donorPass === '') {
 		$emptyField = $emptyField . "Password <br>";
 	}
 	echo '<span style="padding-top: 100px; padding-left:600px;"> Please fill information in for: <br>'. $emptyField;
+
 }
 else{
 
@@ -76,6 +77,17 @@ else{
 
 	echo '<span style="padding-top: 100px; padding-left:600px;"> All fields correct <br>'. $emptyField;
 	if ($username_result){// if user exists, maybe add confirmation?
+		// need to check password
+		//if (password) {
+			//get account balance
+			//$sql_userAccountBal = "SELECT accountBalance FROM users WHERE userID = '$userID'";
+			//$balance_result = mysqli_query($con, $sql_userAccountBal);
+			//$account_balance = mysqli_fetch_array($balance_result);
+			//$new_balance = $donation + floatval($account_balance[0])
+	
+			//		$sql_addDonation = "UPDATE users SET accountBalance = $new_balance WHERE userID = 'userID'";
+			//		$process_donation = mysqli_query($con, $sql_addDonation);
+	//	}
 		$row = mysqli_fetch_array($username_result);//makes the result an array
 		echo "$row[0] $row[1] <br>";
 	}
