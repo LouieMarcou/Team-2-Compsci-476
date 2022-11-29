@@ -31,6 +31,8 @@
 // $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
 
 $con = mysqli_connect('localhost', 'root', '','cornersidehelp');
+//$con = mysqli_connect('localhost', 'root', '','cornersidehelp');
+//mysql credentials = root
 $response = "";
 
 // get the post records
