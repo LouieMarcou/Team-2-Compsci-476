@@ -44,20 +44,6 @@
 		</p>
 		<button type="button" class="button">How to Help</button>
 
-		<h1><?php
-    $user = 'belschneal15';
-    $pass = 'ab3993';
-    $db_info = 'mysql:host=cs.uww.edu;dbname=cornersidehelp';
-
-    try {
-        $db = new PDO($db_info, $user, $pass);
-    }
-    catch (PDOException $e) {
-        print "Error!: " . $e->getmessage() . "<br>";
-        die();
-    }
-    console.log("connected successfully");
-?> </h1>
 	</div>
 	
 	
