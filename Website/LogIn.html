@@ -10,26 +10,35 @@
 	</head>
 		
 	<body>
-		<div>
-		<h1 id="login-links"> 
-			Corner Side Help
-			<a href="Index.html" style="padding-left:425px; font-size:1.1vw"> Home</a>
-			<a href="Sponsors.html" style="font-size:1.1vw"> Sponsors</a>
-			<a href="Donate.html" style="font-size:1.1vw"> Donate</a>
-			<a href="LogIn.html" style="font-size:1.1vw"> Log In</a>
-		</h1>
-	</div>
+		<header>
+		</header>
+		
+		<div class="links">
+			<span style="display:inline-block;">
+				<img src="Pictures/CornerSide Logo Nov 16th (002).png" width="30%" height="30%">
+			</span>
+			<span style="float:right; font-size:2vw; margin-right:25px;">
+				<a href="Index.html">Home</a>
+				<a href="Sponsors.html">Sponsors</a>
+				<a href="Donate.html">Donate</a>
+				<a href="LogIn.html">Log In</a>
+			</span>
+		</div>
 	<br>
 	<br>
 	<div id="div-login">
-		<form method="" action="" class="login">
+		<form method="POST" action="database.php" class="login">
 			<h3 id="login-title">Member Login</h3>
 			<input type = "text" class = "form-control" name="username"
 			placeholder="username" required autofocus><br>
 			<input type = "password" class = "form-control" name = "password"
 			placeholder="password" required><br>
-			<p class="button-row"><button class="btn btn-log btn-primary btn-block" type="submit" name="login">Login</button></p>
+			<p class="button-row"><button class="btn btn-log btn-primary btn-block" type="submit" name="login" formaction="database.php?mode=displayProfile">Login</button></p>
 		</form>
+	</div>
+	<br>
+	<div id="div-createUser">
+		<a href="CreateUser.html">CreateUser</a>
 	</div>
 	<br>
 	<br>
@@ -43,5 +52,11 @@
 			<p class="button-row"><button class="btn btn-log btn-primary btn-block" type="submit" name="login">Login</button></p>
 		</form>
 	</div>
+	
+	<div class="bottom">
+		<img src="Pictures/CornerSide Logo Nov 16th (002).png" width="30%" height="30%" style="margin-left: auto;
+		margin-right: auto;">
+	</div>
+	
 	</body>
 </html>
