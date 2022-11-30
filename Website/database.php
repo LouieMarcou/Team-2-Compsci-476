@@ -11,7 +11,7 @@
         print "Error!: " . $e->getmessage() . "<br>";
         die();
     }
-    echo "connected successfully";
+    console.log("connected successfully");
 
     //CONNECTION TO DATABASE 
 
