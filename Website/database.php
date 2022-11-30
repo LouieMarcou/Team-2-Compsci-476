@@ -1,3 +1,4 @@
+
 <?php
     $user = 'belschneal15';
     $pass = 'ab3993';
@@ -11,9 +12,9 @@
         die();
     }
     echo "connected successfully";
-?>
 
-<?php
+    //CONNECTION TO DATABASE 
+
     $mode = "";
 
 
