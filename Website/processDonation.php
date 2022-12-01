@@ -15,7 +15,7 @@
 		<div class="links">
 			<span style="display:inline-block;">
 				<!--<p style="font-size:3vw; text-align:left; float:left;"> Corner Side Help</p>-->
-				<img src="Pictures/CornerSide Logo Nov 16th (002).png" width="20%">
+				<img src="Pictures/CornerSide_Logo_Nov_16th_(002).png" width="20%">
 			</span>
 			<span style="float:right; font-size:2vw; margin-right:25px;">
 				<a href="Index.html">Home</a>
@@ -26,7 +26,8 @@
 		</div>
 
 <?php
-
+//Dummy username: cornersidehelper
+//Dummy password: CShlp41^23
 // database connection code
 // $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
 
@@ -44,13 +45,16 @@ $donation = "";
 if (isset($_POST['donation'])) {
 	$donation = floatval($_POST['donation']);
 }
+// guest button is pressed
 $donor = "";
 if (isset($_POST['donor'])) {
-	$donor = $_POST['donor'];
+	$donor = $_POST['donor']; 
+	// $donor = "guest"; 
 }
 $donorPass = "";
 if (isset($_POST['donorPass'])){
 	$donorPass = $_POST['donorPass'];
+
 }
 
 //check fields are not empty
@@ -86,7 +90,7 @@ else{
 			//$balance_result = mysqli_query($con, $sql_userAccountBal);
 			//$account_balance = mysqli_fetch_array($balance_result);
 			//$new_balance = $donation + floatval($account_balance[0])
-	
+	//using stripe the command would ...
 			//		$sql_addDonation = "UPDATE users SET accountBalance = $new_balance WHERE userID = 'userID'";
 			//		$process_donation = mysqli_query($con, $sql_addDonation);
 	//	}
