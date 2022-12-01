@@ -14,7 +14,7 @@
 
 		<div class="links">
 			<span style="display:inline-block;">
-				<img src="Pictures/CornerSide Logo Nov 16th (002).png" width="30%" height="30%">
+				<img src="Pictures/CornerSide_Logo_Nov_16th_(002).png" width="30%" height="30%">
 			</span>
 			<span style="float:right; margin-right:25px;">
 				<a href="Index.html">Home</a>
@@ -28,37 +28,38 @@
 
 		<p class = "donateText">This page allows you to enter the ID of the person you are trying to donate to and using Stripe will transfer it to their account</p>
 		
-		<div class = "donateInfo">
-			<label for="userID" style="padding-left: 30px;">ID of Person to recieve donation:</label>
-			<input type="text" id="userID" maxlength="5" size="30"  placeholder="Enter in ID">
-		</div>
+		<form name = "donateForm" method="post" action="processDonation.php">
+			<div class = "donateInfo">
+				<label for="userID" style="padding-left: 30px;">ID of Person to recieve donation:</label>
+				<input name = "userID" type="text" id="userID" maxlength="5" size="30"  placeholder="Enter in ID">
+			</div>
 
-		<div class = "donateInfo">
-			<label for="donation">Enter in the donation amount below:</label>
-			<input type="text" id="donation" size="30" placeholder="Enter in amount">
-		</div>
-		  
+			<div class = "donateInfo">
+				<label for="donation">Enter in the donation amount below:</label>
+				<input name = "donation" type="text" id="donation" size="30" placeholder="Enter in amount">
+			</div>
 
-		<p class = "donateText">If you have an account with use enter your username and password</p>
-		<div class = "donateInfo">
-			<label for="donor">Username:</label>
-			<input type="text" id="donor" size="30" placeholder=" Enter your username">
-		</div>
 
-		<div class = "donateInfo">
-			<label for="donorPass">Password:</label>
-			<input type="text" id="donorpass" size="30" placeholder="Enter your password">
-		</div>
-		
-		<div style="text-align:center; padding-bottom: 50px;">
-			<input type="submit" id = "stripe-button" value="Submit">
-		</div>
+			<p class = "donateText">If you have an account with use enter your username and password</p>
+			<div class = "donateInfo">
+				<label for="donor">Username:</label>
+				<input name = "donor" type="text" id="donor" size="30" placeholder=" Enter your username">
+			</div>
 
-		
+			<div class = "donateInfo">
+				<label for="donorPass">Password:</label>
+				<input name = "donorPass" type="text" id="donorpass" size="30" placeholder="Enter your password">
+			</div>
+
+			<div style="text-align:center; padding-bottom: 50px;">
+				<input type="submit" id = "stripe-button" value="Submit">
+			</div>
+
+		</form>
 	</div>
 	
 	<div class="bottom">
-		<img src="Pictures/CornerSide Logo Nov 16th (002).png" width="30%" height="30%" style="margin-left: auto; margin-right: auto;">
+		<img src="Pictures/CornerSide_Logo_Nov_16th_(002).png" width="30%" height="30%" style="margin-left: auto; margin-right: auto;">
 	</div>
 	
 	</body>
