@@ -18,7 +18,7 @@
 				<img src="Pictures/CornerSide_Logo_Nov_16th_(002).png" width="20%">
 			</span>
 			<span style="float:right; font-size:2vw; margin-right:25px;">
-				<a href="Index.html">Home</a>
+				<a href="index.html">Home</a>
 				<a href="Sponsors.html">Sponsors</a>
 				<a href="Donate.html">Donate</a>
 				<a href="LogIn.html">Log In</a>
