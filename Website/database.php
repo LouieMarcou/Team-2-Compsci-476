@@ -42,17 +42,13 @@
         }
 
         $sql = 'INSERT INTO users(firstName, lastName, city, pHash, username) 
-        VALUES (:firstName,:lastName,:city,:pHash,:username)';
+        VALUES (?,?,?,?,?)';
 
         $pHash = password_hash($password, PASSWORD_DEFAULT);
-
-        $my_Insert_Statement->bindParam(':first_name', $first_Name);
-        $my_Insert_Statement->bindParam(':last_name', $last_Name);
-        $my_Insert_Statement->bindParam(':city', $city);
-        $my_Insert_Statement->bindParam(':pHash', $pHash);
-        $my_Insert_Statement->bindParam(':username', $username);
-       
-        mysqli_query($db, $sql);
+       $stmt = $db->prepare($sql);
+       $stmt->bind_param('sssss', $firstName, $lastName, $city, $pHash, $username);
+       $stmt->execute();
+        //mysqli_query($db, $sql);
 
     // try {
     //     $db = mysqli_connect('localhost', 'root', '', 'cornersidehelp');
