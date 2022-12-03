@@ -30,8 +30,8 @@
     // $pass = 'ab3993';
     // $db_info = 'mysql:dbname=cornersidehelp;host=cs.uww.edu';
     //$db_info = 'mysql:host=cs.uww.edu;dbname=cornersidehelp';
-
-    $db = mysqli_connect('localhost', 'test', 'test', 'cornersidehelp');
+    
+    $db = mysqli_connect('localhost', 'root', '', 'cornersidehelp');
         echo '<p> here </p>';
         if(!$db) {
             echo '<p> failed </p>';
