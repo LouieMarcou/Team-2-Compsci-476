@@ -11,7 +11,6 @@
         print "Error!: " . $e->getmessage() . "<br>";
         die();
     }
-    console.log("connected successfully");
 
     //CONNECTION TO DATABASE 
 
@@ -35,9 +34,9 @@
                 }
 
                 $parameters = [
-                    ":username" => $username;
+                    ":username" => $username,
                     "pHash" => $pHash
-                ]
+                ];
 
                 $sql = 'SELECT `firstName`, `lastName`, `accountBalance`, `city`, `shelterID` FROM `users` WHERE `username` = :username AND `pHash` = :pHash';
 
@@ -72,7 +71,7 @@
                     ":city" => $city,
                     ":pHash" => $pHash,
                     "username" => $username
-                ]
+                ];
                 $stmt = $db->prepare($sql);
 
                 if($stmt->execute($parameters)) {
@@ -97,7 +96,7 @@
 
         $statement->execute($parameterValues);
 
-        $result = $statement->fetchAll(PDO:FETCH_ASSOC);
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $result;
     }

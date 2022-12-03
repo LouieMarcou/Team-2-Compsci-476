@@ -24,7 +24,7 @@
 	</div>
 	
 	<div class="main">
-		<form action="database.php" method="POST">
+		<form action="database.php?mode=createUser" method="POST">
             <h3 id="create-user-title">Create User</h3>
 			<input type = "text" class = "form-control" name="username"
 			placeholder="username" required autofocus><br>
@@ -37,7 +37,7 @@
             <!-- Need Select of shelters -->
             <input type="text" class="form-control" name="city"
             placeHolder="city" required><br>
-			<p class="button-row"><button class="btn btn-log btn-primary btn-block" type="submit" name="createUserSubmit" formaction="database.php?mode=createUser">Create User</button></p>
+			<p class="button-row"><button class="btn btn-log btn-primary btn-block" type="submit" name="createUserSubmit" formaction="">Create User</button></p>
         </form>
     </div>
 
