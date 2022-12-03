@@ -34,6 +34,9 @@
     try {
         $db = mysqli_connect('localhost', 'root', '', 'cornersidehelp');
         echo '<p> here </p>';
+        if(!$db) {
+            echo '<p> failed </p>';
+        }
         //$db = new PDO($db_info, $user, $pass);
     }
     catch (PDOException $e) {
