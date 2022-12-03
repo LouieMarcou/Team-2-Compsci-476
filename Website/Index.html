@@ -10,15 +10,13 @@
 	</head>
 	
 	<body>
-	<header>
-	</header>
 	
 	<div class="links">
 		<span style="display:inline-block;">
-			<p style="font-size:3vw; text-align:left; float:left;"> Corner Side Help</p>
+			<img src="Pictures/CornerSide_Logo_Nov_16th_(002).png" width="30%" height="30%">
 		</span>
-		<span style="float:right; font-size:2vw; margin-right:25px;">
-			<a href="Index.html">Home</a>
+		<span style="float:right; margin-right:25px;">
+			<a href="index.html">Home</a>
 			<a href="Sponsors.html">Sponsors</a>
 			<a href="Donate.html">Donate</a>
 			<a href="LogIn.html">Log In</a>
@@ -26,7 +24,7 @@
 	</div>
 	
 	<div class="main">
-		<img src="Pictures/HomelessPicture.png" alt="Picture" style="margin-left:auto; float:right;">
+		<img src="Pictures/HomelessPicture.png" alt="Picture" style="margin-left:auto; margin-right:auto; float:right;">
 		<span class="intro">
 			<h1>Corner Side help</h1>
 			<p>Just people helping people here.</p>
@@ -34,7 +32,7 @@
 	</div>
 	<div class="factText">
 		<img src="Pictures/HomelessPicture2.png" alt="Picture 2">
-		<p style="margin-left:250px; margin-right:250px; margin-top:50px; margin-bottom:50px;">
+		<p style="margin-left:auto; margin-right:auto; margin-top:50px; margin-bottom:50px;">
 			Did you know that more than 500,000 thousand people are homeless in America alone. 
 			Approximately around 35% of these people abuse alcohol and other substances. 
 			This causes a dilemma. It creates the question of "Do I give them money or are they just going to use it for drugs." 
@@ -42,7 +40,9 @@
 			We have created a card that allows these people to accept your donations through this website and only allows them to be used at fast food chains and some local restaurants. 
 			Thus, providing a meal for those most in need without the fear of the money being misused.
 		</p>
-		<button type="button" class="button">How to Help</button>
+		<form action="About.html">
+			<button type="submit" class="button">How to Help</button>
+		</form>
 
 	</div>
 	
@@ -72,7 +72,7 @@
 			<p style="font-size:1.5em; text-align:center;">Contact us</p>
 			<p>500 Terry Francois Street San Francisco, CA 94158</p>
 		</div>
-		<form method="post" action= "SendEmail.php" style="margin-left:200px; margin-top:50px;" class="contact">
+		<form method="post" action="SendEmail.php" style="margin-left:auto; margin-right:auto; margin-top:50px;" class="contact">
 			<label for="fullName" style="grid-area: 1 / 1 / 1 / 1">Name*</label>
 			<input type="text" id="fullName" name="fullName"  placeholder="Enter your name" style="grid-area: 2 / 1 / 2 / 1;" required>
 		
@@ -80,13 +80,13 @@
 			<input type="text" id="address" name="address" placeholder="Enter your address" style="grid-area: 4 / 1 / 4 / 1">
 			
 
-			<label for="email" style="grid-area: 5 / 1 / 5 / 1">Email Address</label>
+			<label for="email" style="grid-area: 5 / 1 / 5 / 1">Email Address*</label>
 			<input type="email" id="electronicMail" name="email" placeholder="Enter your email address" style="grid-area: 6 / 1 / 6 / 1">
 
 			<label for="phone" style="grid-area: 5 / 2 / 5 / 2">Phone</label>
 			<input type="text" id="phone" name="phone" placeholder="Enter your phone number" style="grid-area: 6 / 2 / 6 / 2">
 			
-			<label for="subject" style="grid-area: 7 / 1 / 7 / 1">Subject</label>
+			<label for="subject" style="grid-area: 7 / 1 / 7 / 1">Subject*</label>
 			<input type="text" id="subject" name="subject" placeholder="Type the subject" style="grid-area: 8 / 1 / 8 / 1">
 
 			<label for="message" style="grid-area: 9 / 1 / 9 / 1">Message</label>
@@ -100,6 +100,11 @@
 	
 	<div class="map">
 		<iframe src="https://www.google.com/maps/d/embed?mid=115IsXm3uYsKdT998NzkRqxhmpi8&hl=en&ehbc=2E312F" width="100%" height="900"></iframe>
+	</div>
+	
+	
+	<div class="bottom">
+		<img src="Pictures/CornerSide_Logo_Nov_16th_(002).png" width="30%" height="30%" style="margin-left: auto; margin-right: auto;">
 	</div>
 	
 	</body>
