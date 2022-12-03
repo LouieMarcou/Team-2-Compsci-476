@@ -2,7 +2,8 @@
 <?php
     $user = 'belschneal15';
     $pass = 'ab3993';
-    $db_info = 'mysql:host=cs.uww.edu;dbname=cornersidehelp';
+    $db_info = 'mysql:dbname=cornersidehelp;host=cs.uww.edu';
+    //$db_info = 'mysql:host=cs.uww.edu;dbname=cornersidehelp';
 
     try {
         $db = new PDO($db_info, $user, $pass);
@@ -15,7 +16,6 @@
     //CONNECTION TO DATABASE 
 
     $mode = "";
-
 
     try {
         if(isset($_GET['mode'])) {
