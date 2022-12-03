@@ -6,7 +6,7 @@
     //$db_info = 'mysql:host=cs.uww.edu;dbname=cornersidehelp';
 
     try {
-        $db = mysqli_connect('localhost', 'root', '', 'cornerside');
+        $db = mysqli_connect('localhost', 'root', '', 'cornersidehelp');
         //$db = new PDO($db_info, $user, $pass);
     }
     catch (PDOException $e) {
@@ -76,11 +76,11 @@
                 mysqli_query($db, $sql);
                 //$stmt = $db->prepare($sql);
 
-                if($stmt->execute($parameters)) {
-                    echo "Created New User";
-                } else {
-                    $stmt->error;
-                }
+                // if($stmt->execute($parameters)) {
+                //     echo "Created New User";
+                // } else {
+                //     $stmt->error;
+                // }
                 break;
             default:
                 
