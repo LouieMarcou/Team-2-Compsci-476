@@ -6,7 +6,7 @@
     //$db_info = 'mysql:host=cs.uww.edu;dbname=cornersidehelp';
 
     try {
-        $db = mysqli_connect('cs.uww.edu/db=cornersidehelp', $user, $pass);
+        $db = mysqli_connect('localhost', 'root', '', 'cornerside');
         //$db = new PDO($db_info, $user, $pass);
     }
     catch (PDOException $e) {
