@@ -30,7 +30,8 @@
     // $pass = 'ab3993';
     // $db_info = 'mysql:dbname=cornersidehelp;host=cs.uww.edu';
     //$db_info = 'mysql:host=cs.uww.edu;dbname=cornersidehelp';
-
+    $testdb = new PDO('mysql:host=localhost;dbname=cornersidehelp', 'root','');
+    echo '<p>in</p>';
     $db = mysqli_connect('localhost', 'root', '', 'cornersidehelp');
         echo '<p> here </p>';
         if(!$db) {
