@@ -32,10 +32,6 @@
     //$db_info = 'mysql:host=cs.uww.edu;dbname=cornersidehelp';
 
     $db = mysqli_connect('localhost', 'root', '', 'cornersidehelp', '4306');
-        echo '<p> here </p>';
-        if(!$db) {
-            echo '<p> failed </p>';
-        }
 
         if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['city'])) {
             $username = $_POST['username'];
@@ -50,15 +46,13 @@
 
         $pHash = password_hash($password, PASSWORD_DEFAULT);
 
-        $parameters = [
-            ":firstName" => $firstName,
-            ":lastName" => $lastName,
-            ":city" => $city,
-            ":pHash" => $pHash,
-            "username" => $username
-        ];
+        $my_Insert_Statement->bindParam(':first_name', $first_Name);
+        $my_Insert_Statement->bindParam(':last_name', $last_Name);
+        $my_Insert_Statement->bindParam(':city', $city);
+        $my_Insert_Statement->bindParam(':pHash', $pHash);
+        $my_Insert_Statement->bindParam(':username', $username);
+       
         mysqli_query($db, $sql);
-        echo('here');
 
     // try {
     //     $db = mysqli_connect('localhost', 'root', '', 'cornersidehelp');
