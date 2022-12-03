@@ -1,5 +1,8 @@
 
 <?php
+
+use Stripe\Util\LoggerInterface;
+
     $user = 'belschneal15';
     $pass = 'ab3993';
     $db_info = 'mysql:dbname=cornersidehelp;host=cs.uww.edu';
@@ -74,6 +77,7 @@
                     "username" => $username
                 ];
                 mysqli_query($db, $sql);
+                var_dump('here');
                 //$stmt = $db->prepare($sql);
 
                 // if($stmt->execute($parameters)) {
