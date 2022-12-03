@@ -26,8 +26,6 @@
 		</div>
 <?php
 
-use Stripe\Util\LoggerInterface;
-
     $user = 'belschneal15';
     $pass = 'ab3993';
     $db_info = 'mysql:dbname=cornersidehelp;host=cs.uww.edu';
@@ -35,6 +33,7 @@ use Stripe\Util\LoggerInterface;
 
     try {
         $db = mysqli_connect('localhost', 'root', '', 'cornersidehelp');
+        echo '<p> here </p>';
         //$db = new PDO($db_info, $user, $pass);
     }
     catch (PDOException $e) {
