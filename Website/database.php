@@ -6,7 +6,8 @@
     //$db_info = 'mysql:host=cs.uww.edu;dbname=cornersidehelp';
 
     try {
-        $db = new PDO($db_info, $user, $pass);
+        $db = mysqli_connect('cs.uww.edu/db=cornersidehelp', $user, $pass);
+        //$db = new PDO($db_info, $user, $pass);
     }
     catch (PDOException $e) {
         print "Error!: " . $e->getmessage() . "<br>";
@@ -72,7 +73,8 @@
                     ":pHash" => $pHash,
                     "username" => $username
                 ];
-                $stmt = $db->prepare($sql);
+                mysqli_query($db, $sql);
+                //$stmt = $db->prepare($sql);
 
                 if($stmt->execute($parameters)) {
                     echo "Created New User";
