@@ -64,7 +64,6 @@
 
                 $sql = 'SELECT `firstName`, `lastName`, `accountBalance`, `city`, `shelterID` FROM `users` WHERE `username` = :username AND `pHash` = :pHash';
 
-                $resultSet = prep($sql, $db, $parameterValues);
 
                 
 
@@ -91,6 +90,43 @@
                 $stmt->bind_param('sssss', $firstName, $lastName, $city, $pHash, $username);
                 $stmt->execute();
                 break;
+
+            case 'createDonor':
+                if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['city'])) {
+                    $username = $_POST['username'];
+                    $password = $_POST['password'];
+                    $firstName = $_POST['firstName'];
+                    $lastName = $_POST['lastName'];
+                    $city = $_POST['city'];
+                }
+            
+                $sql = 'INSERT INTO donors(firstName, lastName, city, pHash, username) 
+                VALUES (?,?,?,?,?)';
+            
+                $pHash = password_hash($password, PASSWORD_DEFAULT);
+                $stmt = $db->prepare($sql);
+                $stmt->bind_param('i', $var);
+                $stmt->execute();
+                break;
+                
+            case 'loginUser':
+                if (isset($_POST['username']) && isset($_POST['password'])) {
+                    $username = $_POST['username'];
+                    $password = $_POST['password'];
+                };
+
+                $sql = 'SELECT firstName, lastName, city, username FROM donors WHERE username = ?, password = ?';
+
+                //mysqli_stmt_bind_param()
+                $stmt->bind_param('ss', $username, $password);
+                $pHash = password_hash($password, PASSWORD_DEFAULT);
+                $stmt = $db->prepare($sql);
+                $stmt->bind_param('sssss', $firstName, $lastName, $city, $pHash, $username);
+                $result = $stmt->execute();
+
+                echo '<p>'. $result . '</p>';
+
+                break;
             default:
                 
         }
@@ -104,16 +140,3 @@
 	</span><!--span for text and button to be aligned-->
 	</form> 
 </html>
-
-<?php
-    function prep ($sql, $db, $parameterValues =null) {
-        $statement = $db->prepare($sql);
-
-        $statement->execute($parameterValues);
-
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        return $result;
-    }
-
-?>
