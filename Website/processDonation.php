@@ -105,8 +105,8 @@ else{
 
 		$row = mysqli_fetch_array($username_result);//makes the result an array
     	echo '<span style="padding-top: 100px; padding-left:600px;">You are donating ' . $donation. ' To '.$row[0]. " ". $row[1];
-		echo '<from method = "post"> <input type="submit" name="submit" value="Submit"> </form>';
-			if (isset($_POST['Submit'])){
+		echo '<form method = "post"> <input type="submit" name="submit" value="Submit"> </form>';
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			//get account balance
 				$sql_userAccountBal = "SELECT accountBalance FROM users WHERE userID = '$userID'";
 				$balance_result = mysqli_query($con, $sql_userAccountBal);
