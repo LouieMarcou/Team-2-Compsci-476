@@ -121,7 +121,7 @@
                 //$stmt->bind_param('ss', $username, $password);
                 $pHash = password_hash($password, PASSWORD_DEFAULT);
                 $stmt = $db->prepare($sql);
-                $stmt->bind_param('sssss', $firstName, $lastName, $city, $pHash, $username);
+                //$stmt->bind_param('sssss', $firstName, $lastName, $city, $pHash, $username);
                 $result = $stmt->execute();
 
                 echo '<p>'. $result . '</p>';
