@@ -108,17 +108,17 @@
                 $stmt->bind_param('i', $var);
                 $stmt->execute();
                 break;
-                
+
             case 'loginUser':
                 if (isset($_POST['username']) && isset($_POST['password'])) {
                     $username = $_POST['username'];
                     $password = $_POST['password'];
                 };
 
-                $sql = 'SELECT firstName, lastName, city, username FROM donors WHERE username = ?, password = ?';
+                $sql = "SELECT firstName, lastName, city, username FROM donors WHERE username = '$username', password = '$password'";
 
                 //mysqli_stmt_bind_param()
-                $stmt->bind_param('ss', $username, $password);
+                //$stmt->bind_param('ss', $username, $password);
                 $pHash = password_hash($password, PASSWORD_DEFAULT);
                 $stmt = $db->prepare($sql);
                 $stmt->bind_param('sssss', $firstName, $lastName, $city, $pHash, $username);
