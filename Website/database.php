@@ -115,7 +115,7 @@
                     $password = $_POST['password'];
                 };
 
-                $sql = "SELECT firstName, lastName, city, username FROM donors WHERE username = '$username' AND password = '$password'";
+                $sql = "SELECT firstName, lastName, city, username FROM donors WHERE username = '$username' AND pHash = '$password'";
 
                 //mysqli_stmt_bind_param()
                 //$stmt->bind_param('ss', $username, $password);
