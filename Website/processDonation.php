@@ -28,8 +28,8 @@
 		</div>
 		
 		
-		// to make pop up window
-		//<?php
+	
+	<?php
 		//echo '<script type="text/javascript">
      //  window.onload = function () { alert("Is this the amonut you want to donate?"); } 
 		//</script>'; 
@@ -104,9 +104,9 @@ else{
 		//if (password) {
 
 		$row = mysqli_fetch_array($username_result);//makes the result an array
-    	echo '<span style="padding-top: 100px; padding-left:600px;">You are donating ' . $donation. ' To '.$row[0]. " ". $row[1];
-		echo '<form method = "post"> <input type="submit" name="submit" value="Submit"> </form>';
-		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    	echo '<span style="padding-top: 200px; padding-left:600px;">You are donating ' . $donation. ' To '.$row[0]. " ". $row[1];
+		echo '<form method = "post" action = "payProcess.php"> <input type="submit" name="submit" value="Verify"> </form>';
+			if (isset($_POST['Verify'])){
 			//get account balance
 				$sql_userAccountBal = "SELECT accountBalance FROM users WHERE userID = '$userID'";
 				$balance_result = mysqli_query($con, $sql_userAccountBal);
@@ -144,7 +144,7 @@ else{
 ?>
 
 <!--for the confirm button-->
-<button onclick="myFunction()">Confirm</button>
+<!-- <button onclick="myFunction()">Confirm</button> -->
 <p id="demo"></p>
 
 	<form>
