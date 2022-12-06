@@ -119,26 +119,31 @@
                     $password = $_POST['password'];
                 };
 
+                $pepper = get_cfg_var("pepper");
+                $pwd_peppered = hash_hmac("sha256", $password, $pepper);
 
-                $sql = "SELECT firstName, lastName, city, username FROM users WHERE username = '$username' AND pHash = '$pHash'";
+
+                $sql = "SELECT firstName, lastName, city, username FROM users WHERE username = '$username' AND pHash = '$pwd_peppered'";
 
 
                 $result = $db->query($sql);
+
+                
                 //mysqli_stmt_bind_param()
                 //$stmt->bind_param('ss', $username, $password);
                 //$stmt = $db->prepare($sql);
                 //$stmt->bind_param('sssss', $firstName, $lastName, $city, $pHash, $username);
                 //$result = $stmt->execute();
 
-                if ($result->num_rows > 0) {
-                    while($row = $result->fetch_assoc()) {
-                      echo "username: " . $row["username"]. " - lastName: " 
-                          . $row["fisrtName"]. " " . $row["lastName"]. "<br>";
-                    }
-              } 
-              else {
-                    echo "No records has been found";
-              }
+            //     if ($result->num_rows > 0) {
+            //         while($row = $result->fetch_assoc()) {
+            //           echo "username: " . $row["username"]. " - lastName: " 
+            //               . $row["fisrtName"]. " " . $row["lastName"]. "<br>";
+            //         }
+            //   } 
+            //   else {
+            //         echo "No records has been found";
+            //   }
 
                 break;
             default:
