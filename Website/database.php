@@ -127,7 +127,7 @@
                 //$stmt->bind_param('sssss', $firstName, $lastName, $city, $pHash, $username);
                 //$result = $stmt->execute();
 
-                print '<p>'. $result . '</p>';
+                echo '<p>'. $result . '</p>';
 
                 break;
             default:
