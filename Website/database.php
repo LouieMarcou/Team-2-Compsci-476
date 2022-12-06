@@ -135,7 +135,11 @@
 
                 $sqlPassword = "SELECT pHash FROM users WHERE username = '$username'";
 
-                $pwd_hashed = $db->query($sqlPassword);
+                $sql_pwd_hashed = $db->query($sqlPassword);
+
+                while($row = $result->fetch_assoc()) {
+                    $pwd_hashed = $row['pHash'];
+                }
 
                 if (password_verify($pwd_peppered, strval($pwd_hashed))) {
                     echo "Password matches.";
