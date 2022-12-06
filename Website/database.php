@@ -115,11 +115,12 @@
                     $password = $_POST['password'];
                 };
 
-                $sql = "SELECT firstName, lastName, city, username FROM donors WHERE username = '$username' AND pHash = '$password'";
+                $pHash = password_hash($password, PASSWORD_DEFAULT);
+
+                $sql = "SELECT firstName, lastName, city, username FROM donors WHERE username = '$username' AND pHash = '$pHash'";
 
                 //mysqli_stmt_bind_param()
                 //$stmt->bind_param('ss', $username, $password);
-                $pHash = password_hash($password, PASSWORD_DEFAULT);
                 $stmt = $db->prepare($sql);
                 //$stmt->bind_param('sssss', $firstName, $lastName, $city, $pHash, $username);
                 $result = $stmt->execute();
