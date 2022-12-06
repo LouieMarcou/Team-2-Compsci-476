@@ -137,7 +137,7 @@
 
                 $pwd_hashed = $db->query($sqlPassword);
 
-                if (password_verify($pwd_peppered, $pwd_hashed)) {
+                if (password_verify($pwd_peppered, strval($pwd_hashed))) {
                     echo "Password matches.";
                 }
                 else {
