@@ -81,18 +81,29 @@
                     $lastName = $_POST['lastName'];
                     $city = $_POST['city'];
                 }
-        
-                $sql = 'INSERT INTO users(firstName, lastName, city, pHash, username) 
-                VALUES (?,?,?,?,?)';
 
-                $pepper = get_cfg_var("pepper");
-                $pwd_peppered = hash_hmac("sha256", $password, $pepper);
-                $pwd_hashed = password_hash($pwd_peppered, PASSWORD_ARGON2ID);
+                $sqlUserNameCheck = "SELECT * FROM users WHERE username = '$username'";
+
+                $result = $db->query($sqlUserNameCheck);
+
+                if ($result) {
+                    if (mysqli_num_rows($result) > 0) {
+                        echo 'Username Already Used!';
+                    } else {
+                        $sql = 'INSERT INTO users(firstName, lastName, city, pHash, username) 
+                        VALUES (?,?,?,?,?)';
+
+                        $pepper = get_cfg_var("pepper");
+                        $pwd_peppered = hash_hmac("sha256", $password, $pepper);
+                        $pwd_hashed = password_hash($pwd_peppered, PASSWORD_ARGON2ID);
+                
+                        //$pHash = password_hash($password, PASSWORD_DEFAULT);
+                        $stmt = $db->prepare($sql);
+                        $stmt->bind_param('sssss', $firstName, $lastName, $city, $pwd_hashed, $username);
+                        $stmt->execute();
+                    }
+                }
         
-                //$pHash = password_hash($password, PASSWORD_DEFAULT);
-                $stmt = $db->prepare($sql);
-                $stmt->bind_param('sssss', $firstName, $lastName, $city, $pwd_hashed, $username);
-                $stmt->execute();
                 break;
 
             case 'createDonor':
@@ -122,12 +133,21 @@
                 $pepper = get_cfg_var("pepper");
                 $pwd_peppered = hash_hmac("sha256", $password, $pepper);
 
-                echo $pwd_peppered;
+                $sqlPassword = "SELECT pHash FROM users WHERE username = '$username'";
 
-                $sql = "SELECT firstName, lastName, city, username FROM users WHERE username = '$username' AND pHash = '$pwd_peppered'";
+                $pwd_hashed = $db->query($sqlPassword);
+
+                if (password_verify($pwd_peppered, $pwd_hashed)) {
+                    echo "Password matches.";
+                }
+                else {
+                    echo "Password incorrect.";
+                }
+
+                // $sql = "SELECT firstName, lastName, city, username FROM users WHERE username = '$username'";
 
 
-                $result = $db->query($sql);
+                // $result = $db->query($sql);
 
                 
                 //mysqli_stmt_bind_param()
