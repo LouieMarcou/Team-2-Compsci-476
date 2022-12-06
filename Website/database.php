@@ -127,7 +127,9 @@
                 //$stmt->bind_param('sssss', $firstName, $lastName, $city, $pHash, $username);
                 //$result = $stmt->execute();
 
-                echo '<p>'. $result . '</p>';
+                $row = mysqli_fetch_array($username_result);
+
+                echo '<p>'. $row . '</p>';
 
                 break;
             default:
