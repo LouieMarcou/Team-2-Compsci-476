@@ -84,8 +84,12 @@
         
                 $sql = 'INSERT INTO users(firstName, lastName, city, pHash, username) 
                 VALUES (?,?,?,?,?)';
+
+                $pepper = get_cfg_var("pepper");
+                $pwd_peppered = hash_hmac("sha256", $password, $pepper);
+                $pwd_hashed = password_hash($pwd_peppered, PASSWORD_ARGON2ID);
         
-                $pHash = password_hash($password, PASSWORD_DEFAULT);
+                //$pHash = password_hash($password, PASSWORD_DEFAULT);
                 $stmt = $db->prepare($sql);
                 $stmt->bind_param('sssss', $firstName, $lastName, $city, $pHash, $username);
                 $stmt->execute();
@@ -115,8 +119,6 @@
                     $password = $_POST['password'];
                 };
 
-                $pHash = password_hash($password, PASSWORD_DEFAULT);
-                echo $pHash;
 
                 $sql = "SELECT firstName, lastName, city, username FROM users WHERE username = '$username' AND pHash = '$pHash'";
 
