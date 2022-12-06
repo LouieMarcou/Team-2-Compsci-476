@@ -129,7 +129,7 @@
 
                 $row = mysqli_fetch_array($result);
 
-                echo '<p>'. $row . '</p>';
+                echo '<p>'. $row[0][0] . '</p>';
 
                 break;
             default:
