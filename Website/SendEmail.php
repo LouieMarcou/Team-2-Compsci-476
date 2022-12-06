@@ -17,7 +17,11 @@ function sendEmail()
 
 ?>
 <?php
+<<<<<<< HEAD
 
+=======
+	phpinfo();
+>>>>>>> main
 	sendEmail();
 
 ?>
