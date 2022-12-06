@@ -122,6 +122,7 @@
                 $pepper = get_cfg_var("pepper");
                 $pwd_peppered = hash_hmac("sha256", $password, $pepper);
 
+                echo $pwd_hashed;
 
                 $sql = "SELECT firstName, lastName, city, username FROM users WHERE username = '$username' AND pHash = '$pwd_peppered'";
 
