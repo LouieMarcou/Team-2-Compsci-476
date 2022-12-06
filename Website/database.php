@@ -117,7 +117,7 @@
 
                 $pHash = password_hash($password, PASSWORD_DEFAULT);
 
-                $sql = "SELECT firstName, lastName, city, username FROM donors WHERE username = '$username' AND pHash = '$pHash'";
+                $sql = "SELECT firstName, lastName, city, username FROM users WHERE username = '$username' AND pHash = '$pHash'";
 
 
                 $result = $db->query($sql);
