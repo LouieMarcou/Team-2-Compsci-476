@@ -116,6 +116,7 @@
                 };
 
                 $pHash = password_hash($password, PASSWORD_DEFAULT);
+                echo $pHash;
 
                 $sql = "SELECT firstName, lastName, city, username FROM users WHERE username = '$username' AND pHash = '$pHash'";
 
