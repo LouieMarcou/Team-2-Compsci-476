@@ -119,11 +119,13 @@
 
                 $sql = "SELECT firstName, lastName, city, username FROM donors WHERE username = '$username' AND pHash = '$pHash'";
 
+
+                $result = $db->query($sql);
                 //mysqli_stmt_bind_param()
                 //$stmt->bind_param('ss', $username, $password);
-                $stmt = $db->prepare($sql);
+                //$stmt = $db->prepare($sql);
                 //$stmt->bind_param('sssss', $firstName, $lastName, $city, $pHash, $username);
-                $result = $stmt->execute();
+                //$result = $stmt->execute();
 
                 print '<p>'. $result . '</p>';
 
