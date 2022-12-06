@@ -127,9 +127,15 @@
                 //$stmt->bind_param('sssss', $firstName, $lastName, $city, $pHash, $username);
                 //$result = $stmt->execute();
 
-                $row = mysqli_fetch_array($result);
-
-                echo '<p>'. $row[0][0] . '</p>';
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                      echo "username: " . $row["username"]. " - lastName: " 
+                          . $row["fisrtName"]. " " . $row["lastName"]. "<br>";
+                    }
+              } 
+              else {
+                    echo "No records has been found";
+              }
 
                 break;
             default:
