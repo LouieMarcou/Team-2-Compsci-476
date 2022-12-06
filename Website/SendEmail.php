@@ -17,7 +17,7 @@ function sendEmail()
 
 ?>
 <?php
-
+	phpinfo();
 	sendEmail();
 
 ?>

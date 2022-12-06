@@ -146,7 +146,7 @@
 		text-align: center; 
 		margin-bottom: 10px;
 		margin-left: auto;
-		margin-right: auto
+		margin-right: auto;
 	}
 
 	.donateText{
@@ -155,7 +155,7 @@
 		font-size:24px;
 		text-align: center;
 		margin-left: auto;
-		margin-right: auto
+		margin-right: auto;
 	}
 	
 	.bottom
@@ -163,7 +163,7 @@
 		padding-top: 100px;
 		background-color:black;
 		margin-left: auto;
-		margin-right: auto
+		margin-right: auto;
 	}
 
 	#login-title{
