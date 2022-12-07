@@ -137,11 +137,11 @@
 
                 $sql_pwd_hashed = $db->query($sqlPassword);
 
-                while($row = $result->fetch_assoc()) {
+                while($row = $sql_pwd_hashed->fetch_assoc()) {
                     $pwd_hashed = $row['pHash'];
                 }
 
-                if (password_verify($pwd_peppered, strval($pwd_hashed))) {
+                if (password_verify($pwd_peppered, $pwd_hashed)) {
                     echo "Password matches.";
                 }
                 else {
