@@ -135,11 +135,13 @@
 	}
 	
 	.login{
-		padding: 70px 0;
-		border: 3px solid whitesmoke;
-		text-align: center;
-		width: 35%;
-		margin-left: 600px;
+		/* padding-left: 100px; */
+		/* padding-top: 100px; */
+		/* border: 3px solid rgb(0, 0, 0); */
+		/* border-width: 5px 20px; */
+		/* text-align: center; */
+		width: 60%;
+		/* margin-left: 600px; */
 	}
 
 	.donateInfo{
@@ -159,11 +161,7 @@
 		font-size:24px;
 		text-align: center;
 		margin-left: auto;
-<<<<<<< HEAD
-		margin-right: auto
-=======
 		margin-right: auto;
->>>>>>> main
 	}
 	
 	.bottom
@@ -171,18 +169,14 @@
 		padding-top: 100px;
 		background-color:black;
 		margin-left: auto;
-<<<<<<< HEAD
-		margin-right: auto
-=======
 		margin-right: auto;
->>>>>>> main
 	}
 
 	#login-title{
 		text-align: center;
 	}
 	#div-login{
-		padding: 70px 0;
+		padding-top: 100px;
 		text-align: center;
 	}
 	#login-links{
