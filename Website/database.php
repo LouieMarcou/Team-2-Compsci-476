@@ -161,6 +161,44 @@
                 }
 
                 break;
+
+                case 'loginDonor':
+                    if (isset($_POST['username']) && isset($_POST['password'])) {
+                        $username = $_POST['username'];
+                        $password = $_POST['password'];
+                    };
+    
+                    $pepper = get_cfg_var("pepper");
+                    $pwd_peppered = hash_hmac("sha256", $password, $pepper);
+    
+                    $sqlPassword = "SELECT pHash FROM donors WHERE username = '$username'";
+    
+                    $sql_pwd_hashed = $db->query($sqlPassword);
+    
+                    while($row = $sql_pwd_hashed->fetch_assoc()) {
+                        $pwd_hashed = $row['pHash'];
+                    }
+    
+                    if (password_verify($pwd_peppered, $pwd_hashed)) {
+                        $sql = "SELECT firstName, lastName, city, username FROM donors WHERE username = '$username'";
+                        
+                        $result = $db->query($sql);
+    
+                        if ($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc()) {
+                                      echo "username: " . $row["username"]. " - lastName: " 
+                                          . $row["firstName"]. " " . $row["lastName"]. "<br>";
+                                    }
+                              } 
+                              else {
+                                    echo "No records has been found";
+                              }
+                    }
+                    else {
+                        echo "Password incorrect.";
+                    }
+    
+                    break;
             default:
                 
         }
