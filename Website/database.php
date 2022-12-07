@@ -142,33 +142,23 @@
                 }
 
                 if (password_verify($pwd_peppered, $pwd_hashed)) {
-                    echo "Password matches.";
+                    $sql = "SELECT firstName, lastName, city, username FROM users WHERE username = '$username'";
+                    
+                    $result = $db->query($sql);
+
+                    if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                  echo "username: " . $row["username"]. " - lastName: " 
+                                      . $row["fisrtName"]. " " . $row["lastName"]. "<br>";
+                                }
+                          } 
+                          else {
+                                echo "No records has been found";
+                          }
                 }
                 else {
                     echo "Password incorrect.";
                 }
-
-                // $sql = "SELECT firstName, lastName, city, username FROM users WHERE username = '$username'";
-
-
-                // $result = $db->query($sql);
-
-                
-                //mysqli_stmt_bind_param()
-                //$stmt->bind_param('ss', $username, $password);
-                //$stmt = $db->prepare($sql);
-                //$stmt->bind_param('sssss', $firstName, $lastName, $city, $pHash, $username);
-                //$result = $stmt->execute();
-
-            //     if ($result->num_rows > 0) {
-            //         while($row = $result->fetch_assoc()) {
-            //           echo "username: " . $row["username"]. " - lastName: " 
-            //               . $row["fisrtName"]. " " . $row["lastName"]. "<br>";
-            //         }
-            //   } 
-            //   else {
-            //         echo "No records has been found";
-            //   }
 
                 break;
             default:
