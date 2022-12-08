@@ -30,12 +30,13 @@
         <p id="demo"></p>
 
 	<?php
-        include 'processDonation.php';
-        if (isset($_POST['Verify'])){
+    	include "processDonation.php";
+        if (isset($_POST['submit'])){
             $con = mysqli_connect('localhost', 'root', '','cornersidehelp');
-            //$donation = $_GET['donation'];
-
-            //$userID = $_GET['userID'];
+            $donation = $_GET['donation'];
+			echo '<span style="padding-top: 200px; padding-left:600px;">dontation is'. $donation;
+            $userID = $_GET['userID'];
+			// echo '<span style="padding-top: 200px; padding-left:600px;">userID is'. $userID;
         //get account balance
             $sql_userAccountBal = "SELECT accountBalance FROM users WHERE userID = '$userID'";
             $balance_result = mysqli_query($con, $sql_userAccountBal);
@@ -45,7 +46,7 @@
             $sql_addDonation = "UPDATE users SET accountBalance = $new_balance WHERE userID = '$userID'";
             $process_donation = mysqli_query($con, $sql_addDonation);
 
-            echo '<script>alert("Paymeny Sent!")</script>';
+            echo '<span style="padding-top: 200px; padding-left:600px;">Paymeny Sent!';
         }
     ?>
 </html>

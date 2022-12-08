@@ -36,6 +36,7 @@
 		//?>
 
 <?php
+// include 'payProcess.php';
 //Dummy username: cornersidehelper
 //Dummy password: CShlp41^23
 // database connection code
@@ -90,34 +91,33 @@ if ($userID === '' || $donation === '' || !$guest) {
 		$emptyField = $emptyField . "Password <br>";
 	}
 
-	echo '<span style="padding-top: 100px; padding-left:600px;"> Please fill information in for: <br>'. $emptyField;
+	echo '<span style="padding-top: 200px;"> Please fill information in for: <br>'. $emptyField;
 }
 
 else{
 	$sql_username = "SELECT firstName, lastName FROM users WHERE userID='$userID'"; //get first and last name from users 
 	$username_result = mysqli_query($con, $sql_username); //send query
 	//echo '<span style="padding-top: 100px; padding-left:600px;"> All fields correct <br>';
-	if ($username_result){// if user exists, maybe add confirmation?
+	if ($username_result){// if user exists
 
 
 		// need to check password
 		//if (password) {
 
 		$row = mysqli_fetch_array($username_result);//makes the result an array
-    	echo '<span style="padding-top: 200px; padding-left:600px;">You are donating ' . $donation. ' To '.$row[0]. " ". $row[1];
-		echo '<form method = "post" action = "payProcess.php"> <input type="submit" name="submit" value="Verify"> </form>';
-			if (isset($_POST['Verify'])){
-			//get account balance
-				$sql_userAccountBal = "SELECT accountBalance FROM users WHERE userID = '$userID'";
-				$balance_result = mysqli_query($con, $sql_userAccountBal);
-				$account_balance = mysqli_fetch_array($balance_result);
-				$new_balance = floatval($donation) + floatval($account_balance[0]);
-				
-				$sql_addDonation = "UPDATE users SET accountBalance = $new_balance WHERE userID = '$userID'";
-				$process_donation = mysqli_query($con, $sql_addDonation);
-
-				echo '<script>alert("Paymeny Sent!")</script>';
-			}
+		echo '<span style="padding-top: 200px;">You donated ' . $donation. ' To '.$row[0]. " ". $row[1];
+		
+		//get account balance
+		// $_SERVER["PHP_SELF"];
+		$sql_userAccountBal = "SELECT accountBalance FROM users WHERE userID = '$userID'";
+		$balance_result = mysqli_query($con, $sql_userAccountBal);
+		$account_balance = mysqli_fetch_array($balance_result);
+		$new_balance = floatval($donation) + floatval($account_balance[0]);
+		
+		$sql_addDonation = "UPDATE users SET accountBalance = $new_balance WHERE userID = '$userID'";
+		$process_donation = mysqli_query($con, $sql_addDonation);
+		// echo '<script>alert("Paymeny Sent!")</script>';
+			
 	//	}
 		//$row = mysqli_fetch_array($username_result);//makes the result an array
 		//echo "$row[0] $row[1] <br>";
