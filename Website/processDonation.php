@@ -111,23 +111,30 @@ else if (($userID === '' || $donation === '') && !checkGuest($guest)) {
 }
 
 else{
+	$sql_donorname = "SELECT username FROM donors WHERE username = '$donor'";
+	$donorname_result = mysqli_query($con, $sql_donorname);
 	$sql_username = "SELECT firstName, lastName FROM users WHERE userID='$userID'"; //get first and last name from users 
 	$username_result = mysqli_query($con, $sql_username); //send query
-	if ($username_result){// if user exists
-		
+
+	if (!$donorname_result && !checkGuest($guest)) { //and check password
+		echo '<span style="padding-top: 200px;"> Username not recognized please try again<br>';
+	} 
+	else if (!$username_result) {
+		echo '<span style="padding-top: 200px;"> The User ID entered does not exist in database <br>';
+	}
+	else {
 		//if guest checkout
-		if ($guest === "guest"){
+		if ($guest === "guest") {
 			$donor = "guest";
-		}
-		else{
+		} else {
 			$sql_getDonorID = "SELECT donorID FROM donors WHERE username = '$donor'";
 			$donor_result = mysqli_query($con, $sql_getDonorID);
-			$donor_found = $account_balance = mysqli_fetch_array($donor_result);
+			$donor_found = mysqli_fetch_array($donor_result);
 			$donor = $donor_found[0];
 		}
-
-		$row = mysqli_fetch_array($username_result);//makes the result an array
-		echo '<span style="padding-top: 200px;">You donated ' . $donation. ' To '.$row[0]. " ". $row[1];
+		
+		$row = mysqli_fetch_array($username_result); //makes the result an array
+		echo '<span style="padding-top: 200px;">You donated ' . $donation . ' To ' . $row[0] . " " . $row[1];
 		
 		//get account balance
 		$sql_userAccountBal = "SELECT accountBalance FROM users WHERE userID = '$userID'";
@@ -137,10 +144,11 @@ else{
 		
 		$sql_addDonation = "UPDATE users SET accountBalance = $new_balance WHERE userID = '$userID'";
 		$process_donation = mysqli_query($con, $sql_addDonation);
-		
+
 		//make receipt
 		$sql_addReceipt = "INSERT INTO `receipts` (`receiptID`, `userID`, `donorID`, `amount`) VALUES ('', '$userID', '$donor', '$donation')";
 		$process_receipt = mysqli_query($con, $sql_addReceipt);
+		
 	}
 	
 }
