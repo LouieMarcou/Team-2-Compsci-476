@@ -115,11 +115,12 @@ else{
 	$donorname_result = mysqli_query($con, $sql_donorname);
 	$sql_username = "SELECT firstName, lastName FROM users WHERE userID='$userID'"; //get first and last name from users 
 	$username_result = mysqli_query($con, $sql_username); //send query
+	$username_num = mysqli_num_rows($username_result);
 
 	if (!$donorname_result && !checkGuest($guest)) { //and check password
 		echo '<span style="padding-top: 200px;"> Username not recognized please try again<br>';
 	} 
-	else if (!$username_result) {
+	else if ($username_num == 0) {
 		echo '<span style="padding-top: 200px;"> The User ID entered does not exist in database <br>';
 	}
 	else {
