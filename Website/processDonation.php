@@ -113,14 +113,15 @@ else if (($userID === '' || $donation === '') && !checkGuest($guest)) {
 else{
 	$sql_donorname = "SELECT username FROM donors WHERE username = '$donor'";
 	$donorname_result = mysqli_query($con, $sql_donorname);
+	$donorname_num = mysqli_num_rows($donorname_result);
 	$sql_username = "SELECT firstName, lastName FROM users WHERE userID='$userID'"; //get first and last name from users 
 	$username_result = mysqli_query($con, $sql_username); //send query
-	$username_num = mysqli_num_rows($username_result);
+	$username_num = mysqli_num_rows($username_result);// check rows, if zero no results found
 
-	if (!$donorname_result && !checkGuest($guest)) { //and check password
+	if ($donorname_result == 0 && !checkGuest($guest)) { //and check password
 		echo '<span style="padding-top: 200px;"> Username not recognized please try again<br>';
 	} 
-	else if ($username_num == 0) {
+	else if ($username_num == 0) { 
 		echo '<span style="padding-top: 200px;"> The User ID entered does not exist in database <br>';
 	}
 	else {
