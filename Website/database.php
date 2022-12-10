@@ -80,7 +80,7 @@
 
                 $result = $db->query($sqlUserNameCheck);
 
-                if ($result) { //c1isvFdxMDdmjOlvxpecFw
+                if ($result) {
                     if (mysqli_num_rows($result) > 0) {
                         echo 'Username Already Used!';
                     } else {
@@ -183,9 +183,8 @@
     
                     $sql_pwd_hashed = $db->query($sqlPassword);
     
-                    while($row = $sql_pwd_hashed->fetch_assoc()) { //fetch the sql pHash of username
-                        $pwd_hashed = $row['pHash'];
-                    }
+                    $row = $sql_pwd_hashed->fetch_assoc(); //fetch the sql pHash of username
+                    $pwd_hashed = $row['pHash'];
     
                     if (password_verify($pwd_peppered, $pwd_hashed)) { //compare the hashed password with the database password
                         $sql = "SELECT firstName, lastName, city, username FROM donors WHERE username = '$username'";
