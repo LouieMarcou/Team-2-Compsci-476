@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<!-- for the confirm button -->
+	
 		<meta charset="utf-8" />
 		<title>Corner Side Help</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +17,7 @@
 		<div class="links">
 			<span style="display:inline-block;">
 				<!--<p style="font-size:3vw; text-align:left; float:left;"> Corner Side Help</p>-->
-				<img src="Pictures/Cornerside_Logo_Nov_16th_002.png" width="20%">
+				<img src="Pictures/Cornerside_Logo_Nov_16th_(002).png" width="20%">
 			</span>
 			<span style="float:right; font-size:2vw; margin-right:25px;">
 				<a href="index.html">Home</a>
@@ -24,26 +26,36 @@
 				<a href="LogIn.html">Log In</a>
 			</span>
 		</div>
+		
+		
+	
+	<?php
+		//echo '<script type="text/javascript">
+     //  window.onload = function () { alert("Is this the amonut you want to donate?"); } 
+		//</script>'; 
+		//?>
 
 <?php
+// include 'payProcess.php';
 //Dummy username: cornersidehelper
 //Dummy password: CShlp41^23
 // database connection code
 // $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
 
 $con = mysqli_connect('localhost', 'root', '','cornersidehelp');
-//$con = mysqli_connect('localhost', 'root', '','cornersidehelp');
+//$con = mysqli_connect('localhost', 'cornersidehelper', 'CShlp41^23','cornersidehelp'); // serrver
 //mysql credentials = root
-$response = "";
+$emptyField = "";
 
 // get the post records
 $userID = "";
+
 if (isset($_POST['userID'])) {
 	$userID = $_POST['userID'];
 }
 $donation = "";
 if (isset($_POST['donation'])) {
-	$donation = floatval($_POST['donation']);
+	$donation = ($_POST['donation']);
 }
 // guest button is pressed
 $donor = "";
@@ -54,13 +66,34 @@ if (isset($_POST['donor'])) {
 $donorPass = "";
 if (isset($_POST['donorPass'])){
 	$donorPass = $_POST['donorPass'];
+}
+$guest = "";
+if (isset($_POST['guest'])){
+	$guest = $_POST['guest'];
+}
 
+function checkGuest($guest){
+	if ($guest === "guest") {
+		return true;
+	}else {
+		return false;
+	}
 }
 
 //check fields are not empty
-if ($userID === '' || $donation === '' || $donor === '' || $donorPass === '') {
-	$emptyField = "";
+if (($userID === '' || $donation === '') && checkGuest($guest) ) {
+	
+	if ($userID === ''){
+		$emptyField = $emptyField . "User ID <br>";
+	}
+	if ($donation === ''){
+		$emptyField = $emptyField . "Donation amount <br>";
+	}
 
+	echo '<span style="padding-top: 200px;"> Please fill information in for: <br>'. $emptyField;
+} 
+
+else if (($userID === '' || $donation === '') && !checkGuest($guest)) {
 	if ($userID === ''){
 		$emptyField = $emptyField . "User ID <br>";
 	}
@@ -73,47 +106,58 @@ if ($userID === '' || $donation === '' || $donor === '' || $donorPass === '') {
 	if ($donorPass === ''){
 		$emptyField = $emptyField . "Password <br>";
 	}
-	echo '<span style="padding-top: 100px; padding-left:600px;"> Please fill information in for: <br>'. $emptyField;
 
+	echo '<span style="padding-top: 200px;"> Please fill information in for: <br>'. $emptyField;
 }
-else{
 
+else{
+	$sql_donorname = "SELECT username FROM donors WHERE username = '$donor'";
+	$donorname_result = mysqli_query($con, $sql_donorname);
+	$donorname_num = mysqli_num_rows($donorname_result);
 	$sql_username = "SELECT firstName, lastName FROM users WHERE userID='$userID'"; //get first and last name from users 
 	$username_result = mysqli_query($con, $sql_username); //send query
+	$username_num = mysqli_num_rows($username_result);// check rows, if zero no results found
 
-	echo '<span style="padding-top: 100px; padding-left:600px;"> All fields correct <br>'. $emptyField;
-	if ($username_result){// if user exists, maybe add confirmation?
-		// need to check password
-		//if (password) {
-			//get account balance
-			//$sql_userAccountBal = "SELECT accountBalance FROM users WHERE userID = '$userID'";
-			//$balance_result = mysqli_query($con, $sql_userAccountBal);
-			//$account_balance = mysqli_fetch_array($balance_result);
-			//$new_balance = $donation + floatval($account_balance[0])
-	//using stripe the command would ...
-			//		$sql_addDonation = "UPDATE users SET accountBalance = $new_balance WHERE userID = 'userID'";
-			//		$process_donation = mysqli_query($con, $sql_addDonation);
-	//	}
-		$row = mysqli_fetch_array($username_result);//makes the result an array
-		echo "$row[0] $row[1] <br>";
+	if ($donorname_num == 0 && !checkGuest($guest)) { //and check password
+		echo '<span style="padding-top: 200px;"> Username not recognized please try again<br>';
+	} 
+	else if ($username_num == 0) { 
+		echo '<span style="padding-top: 200px;"> The User ID entered does not exist in database <br>';
 	}
-	//$username_num = mysqli_num_rows($username_result);
-	//if ($usernameid != 0) { //If user exists
-	//	$username_echo = '<span style="color:#e60000;text-align:center;">"There is user with that username.</span>'; // ...kill the script! 
-	//}
+	else {
+		//if guest checkout
+		if ($guest === "guest") {
+			$donor = "guest";
+		} else {
+			$sql_getDonorID = "SELECT donorID FROM donors WHERE username = '$donor'";
+			$donor_result = mysqli_query($con, $sql_getDonorID);
+			$donor_found = mysqli_fetch_array($donor_result);
+			$donor = $donor_found[0];
+		}
+		
+		$row = mysqli_fetch_array($username_result); //makes the result an array
+		echo '<span style="padding-top: 200px;">You donated ' . $donation . ' To ' . $row[0] . " " . $row[1];
+		
+		//get account balance
+		$sql_userAccountBal = "SELECT accountBalance FROM users WHERE userID = '$userID'";
+		$balance_result = mysqli_query($con, $sql_userAccountBal);
+		$account_balance = mysqli_fetch_array($balance_result);
+		$new_balance = floatval($donation) + floatval($account_balance[0]);
+		
+		$sql_addDonation = "UPDATE users SET accountBalance = $new_balance WHERE userID = '$userID'";
+		$process_donation = mysqli_query($con, $sql_addDonation);
 
-	// database insert SQL code
-	//$sql = "INSERT INTO `receipts` (`receiptID`, `userID`, `donorID`, `amount`) VALUES ('', '$userID', '$donor', '$donation')";
-
-	// insert in database 
-	//$rs = mysqli_query($con, $sql);
-	//
-	//if($rs)
-	//{
-	//	echo "Receipt Record Inserted";
-	//}
+		//make receipt
+		$sql_addReceipt = "INSERT INTO `receipts` (`receiptID`, `userID`, `donorID`, `amount`) VALUES ('', '$userID', '$donor', '$donation')";
+		$process_receipt = mysqli_query($con, $sql_addReceipt);
+		
 	}
+	
+}
+	
+
 ?>
+
 	<form>
 	 <input type="button" value="Go back" onclick="history.back()">
 	</span><!--span for text and button to be aligned-->
