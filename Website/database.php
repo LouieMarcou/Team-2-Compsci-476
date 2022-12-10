@@ -14,16 +14,16 @@
 
 		<div class="links">
 			<span style="display:inline-block;">
-				<!--<p style="font-size:3vw; text-align:left; float:left;"> Corner Side Help</p>-->
-				<img src="Pictures/Cornerside_Logo_Nov_16th_002.png" width="20%">
+				<img src="Pictures/CornerSide_Logo_Nov_16th_(002).png" width="30%" height="30%">
 			</span>
-			<span style="float:right; font-size:2vw; margin-right:25px;">
-				<a href="index.html">Home</a>
+			<span style="float:right; margin-right:25px;">
+				<a href="Index.html">Home</a>
 				<a href="Sponsors.html">Sponsors</a>
 				<a href="Donate.html">Donate</a>
 				<a href="LogIn.html">Log In</a>
 			</span>
 		</div>
+        <div>
 <?php
 
     //ALTER TABLE users
@@ -161,11 +161,11 @@
                                 }
                           } 
                           else {
-                                echo "No records has been found";
+                                echo "No records has been found <input type='button' value='Go back' onclick='history.back()''>";
                           }
                 }
                 else {
-                    echo "Password is incorrect.";
+                    echo "Password is incorrect. <input type='button' value='Go back' onclick='history.back()''>";
                 }
 
                 break;
@@ -199,11 +199,11 @@
                                     }
                               } 
                               else {
-                                    echo "No records has been found";
+                                    echo "No records has been found <input type='button' value='Go back' onclick='history.back()''>";
                               }
                     }
                     else {
-                        echo "Password is incorrect.";
+                        echo "Password is incorrect. <input type='button' value='Go back' onclick='history.back()''>";
                     }
     
                     break;
@@ -216,6 +216,7 @@
         die();
     } 
 ?>
+        </div>
 <form>
 	</span><!--span for text and button to be aligned-->
 	</form> 
