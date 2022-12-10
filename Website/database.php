@@ -65,12 +65,6 @@
                 $sql = 'SELECT `firstName`, `lastName`, `accountBalance`, `city`, `shelterID` FROM `users` WHERE `username` = :username AND `pHash` = :pHash';
 
 
-                
-
-                // $pageTitle = 'Profile';
-                // $columns = array("");
-                // displayResultSet($pageTitle, $reultSet, $columns);
-
                 break;
 
             case 'createUser':
@@ -114,14 +108,25 @@
                     $lastName = $_POST['lastName'];
                     $city = $_POST['city'];
                 }
+
+                $sqlUserNameCheck = "SELECT * FROM donors WHERE username = '$username'";
+
+                $result = $db->query($sqlUserNameCheck);
+
+                if ($result) {
+                    if (mysqli_num_rows($result) > 0) {
+                        echo 'Username Already Used!';
+                    } else {
             
-                $sql = 'INSERT INTO donors(firstName, lastName, city, pHash, username) 
-                VALUES (?,?,?,?,?)';
-            
-                $pHash = password_hash($password, PASSWORD_DEFAULT);
-                $stmt = $db->prepare($sql);
-                $stmt->bind_param('i', $var);
-                $stmt->execute();
+                        $sql = 'INSERT INTO donors(firstName, lastName, city, pHash, username) 
+                        VALUES (?,?,?,?,?)';
+                    
+                        $pHash = password_hash($password, PASSWORD_DEFAULT);
+                        $stmt = $db->prepare($sql);
+                        $stmt->bind_param('i', $var);
+                        $stmt->execute();
+                    }
+                }
                 break;
 
             case 'loginUser':
