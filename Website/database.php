@@ -80,18 +80,17 @@
 
                 $result = $db->query($sqlUserNameCheck);
 
-                if ($result) {
+                if ($result) { //c1isvFdxMDdmjOlvxpecFw
                     if (mysqli_num_rows($result) > 0) {
                         echo 'Username Already Used!';
                     } else {
                         $sql = 'INSERT INTO users(firstName, lastName, city, pHash, username) 
                         VALUES (?,?,?,?,?)';
 
-                        $pepper = get_cfg_var("pepper");
-                        $pwd_peppered = hash_hmac("sha256", $password, $pepper);
-                        $pwd_hashed = password_hash($pwd_peppered, PASSWORD_ARGON2ID);
-                
-                        //$pHash = password_hash($password, PASSWORD_DEFAULT);
+                        $pepper = get_cfg_var("pepper"); //grabs pepper variable from config file
+                        $pwd_peppered = hash_hmac("sha256", $password, $pepper); //Generates  a keyed hash value using the HMAC method
+                        $pwd_hashed = password_hash($pwd_peppered, PASSWORD_ARGON2ID); //hashes the password using Argon2ID hashing algorithm
+                        
                         $stmt = $db->prepare($sql);
                         $stmt->bind_param('sssss', $firstName, $lastName, $city, $pwd_hashed, $username);
                         $stmt->execute();
@@ -121,9 +120,12 @@
                         $sql = 'INSERT INTO donors(firstName, lastName, city, pHash, username) 
                         VALUES (?,?,?,?,?)';
                     
-                        $pHash = password_hash($password, PASSWORD_DEFAULT);
+                        $pepper = get_cfg_var("pepper"); //grabs pepper variable from config file
+                        $pwd_peppered = hash_hmac("sha256", $password, $pepper); //Generates  a keyed hash value using the HMAC method
+                        $pwd_hashed = password_hash($pwd_peppered, PASSWORD_ARGON2ID); //hashes the password using Argon2ID hashing algorithm
+                        
                         $stmt = $db->prepare($sql);
-                        $stmt->bind_param('i', $var);
+                        $stmt->bind_param('sssss', $firstName, $lastName, $city, $pwd_hashed, $username);
                         $stmt->execute();
                     }
                 }
@@ -135,26 +137,27 @@
                     $password = $_POST['password'];
                 };
 
-                $pepper = get_cfg_var("pepper");
-                $pwd_peppered = hash_hmac("sha256", $password, $pepper);
+                $pepper = get_cfg_var("pepper"); //grabs pepper variable from config file
+                $pwd_peppered = hash_hmac("sha256", $password, $pepper); //Generates  a keyed hash value using the HMAC method using the password revceived from login
 
                 $sqlPassword = "SELECT pHash FROM users WHERE username = '$username'";
 
-                $sql_pwd_hashed = $db->query($sqlPassword);
+                $sql_pwd_hashed = $db->query($sqlPassword); 
 
-                while($row = $sql_pwd_hashed->fetch_assoc()) {
-                    $pwd_hashed = $row['pHash'];
-                }
+                $row = $sql_pwd_hashed->fetch_assoc(); //fetch the sql pHash of username
+                $pwd_hashed = $row['pHash'];
 
-                if (password_verify($pwd_peppered, $pwd_hashed)) {
-                    $sql = "SELECT firstName, lastName, city, username FROM users WHERE username = '$username'";
+                if (password_verify($pwd_peppered, $pwd_hashed)) { //compare the hashed password with the database password
+                    $sql = "SELECT firstName, lastName, accountBalance, city, username FROM users WHERE username = '$username'";
                     
                     $result = $db->query($sql);
 
                     if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                  echo "username: " . $row["username"]. " - lastName: " 
-                                      . $row["firstName"]. " " . $row["lastName"]. "<br>";
+                                  echo "Username: " . $row["username"]. "<br>First Name: " 
+                                      . $row["firstName"]. "<br>Last Name:" . $row["lastName"]. 
+                                      "<br>City: " . $row["city"].
+                                      "<br>Account Balance: $" . $row["accountBalance"];
                                 }
                           } 
                           else {
@@ -162,7 +165,7 @@
                           }
                 }
                 else {
-                    echo "Password incorrect.";
+                    echo "Password is incorrect.";
                 }
 
                 break;
@@ -173,26 +176,27 @@
                         $password = $_POST['password'];
                     };
     
-                    $pepper = get_cfg_var("pepper");
-                    $pwd_peppered = hash_hmac("sha256", $password, $pepper);
+                    $pepper = get_cfg_var("pepper"); //grabs pepper variable from config file
+                    $pwd_peppered = hash_hmac("sha256", $password, $pepper); //Generates  a keyed hash value using the HMAC method using the password revceived from login
     
                     $sqlPassword = "SELECT pHash FROM donors WHERE username = '$username'";
     
                     $sql_pwd_hashed = $db->query($sqlPassword);
     
-                    while($row = $sql_pwd_hashed->fetch_assoc()) {
+                    while($row = $sql_pwd_hashed->fetch_assoc()) { //fetch the sql pHash of username
                         $pwd_hashed = $row['pHash'];
                     }
     
-                    if (password_verify($pwd_peppered, $pwd_hashed)) {
+                    if (password_verify($pwd_peppered, $pwd_hashed)) { //compare the hashed password with the database password
                         $sql = "SELECT firstName, lastName, city, username FROM donors WHERE username = '$username'";
                         
                         $result = $db->query($sql);
     
                         if ($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc()) {
-                                      echo "username: " . $row["username"]. " - lastName: " 
-                                          . $row["firstName"]. " " . $row["lastName"]. "<br>";
+                                        echo "Username: " . $row["username"]. "<br>First Name: " 
+                                        . $row["firstName"]. "<br>Last Name:" . $row["lastName"]. 
+                                        "<br>City: " . $row["city"];
                                     }
                               } 
                               else {
@@ -200,7 +204,7 @@
                               }
                     }
                     else {
-                        echo "Password incorrect.";
+                        echo "Password is incorrect.";
                     }
     
                     break;
