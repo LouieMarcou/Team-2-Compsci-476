@@ -3,7 +3,7 @@ $message=$_POST["message"];
 $subject=$_POST["subject"];
 $sender=$_POST["email"];
 $name=$_POST["fullName"];
-$recipent = "marcoulouie@gmail.com";
+$recipent = "insertEmail@gmail.com";
 
 function sendEmail()
 {
@@ -17,11 +17,7 @@ function sendEmail()
 
 ?>
 <?php
-<<<<<<< HEAD
-
-=======
-	phpinfo();
->>>>>>> main
+	//phpinfo();
 	sendEmail();
 
 ?>

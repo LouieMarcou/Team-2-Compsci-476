@@ -8,6 +8,25 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 		<link rel="stylesheet" href="WebsiteStyleSheet.css">
 		
+		<script>
+
+			function makeVerify(){
+				var donation = parseFloat(document.getElementById("donation").value);
+				document.getElementById("verify").addEventListener("click", function () {
+					alert("Be sure to double check the amount you want to donate.\nYou will be donating $" + donation+ " \nIf this is correct select the Submit button below");
+
+					var verify = document.getElementById("verifybtn");
+
+					const button = document.createElement("button");
+					button.innerText = "Submit";
+					button.type = "submit";
+					button.name = "button";
+					verify.appendChild(button);
+				});
+			}
+
+		</script>
+		
 	</head>
 		
 	<body>
@@ -39,20 +58,31 @@
 				<input name = "donation" type="text" id="donation" size="30" placeholder="Enter in amount">
 			</div>
 
+			<div style="text-align:center; ">
+				<input type = "checkbox" id = "guest" name = "guest">
+				<label for="guest">Check this box if your cheching out as a guest</label><br>
+			</div>
 
 			<p class = "donateText">If you have an account with use enter your username and password</p>
+			
 			<div class = "donateInfo">
 				<label for="donor">Username:</label>
 				<input name = "donor" type="text" id="donor" size="30" placeholder=" Enter your username">
 			</div>
+			
 
 			<div class = "donateInfo">
 				<label for="donorPass">Password:</label>
-				<input name = "donorPass" type="text" id="donorpass" size="30" placeholder="Enter your password">
+				<input name = "donorPass" type="password" id="donorPass" size="30" placeholder="Enter your password">
 			</div>
 
 			<div style="text-align:center; padding-bottom: 50px;">
-				<input type="submit" id = "stripe-button" value="Submit">
+				<!-- <input type="submit" id = "stripe-button" value="Submit"> -->
+				<button id = "verify" type = "button" onclick= "makeVerify()">Verify</button>
+			</div>
+
+			<div style="text-align:center;" id = "verifybtn">
+
 			</div>
 
 		</form>
@@ -63,4 +93,5 @@
 	</div>
 	
 	</body>
+	
 </html>
