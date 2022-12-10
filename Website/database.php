@@ -151,18 +151,18 @@
 
                     if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                  echo "Username: " . $row["username"]. "<br>First Name: " 
+                                  echo "<span style='padding-top: 200px;'> Username: " . $row["username"]. "<br>First Name: " 
                                       . $row["firstName"]. "<br>Last Name:" . $row["lastName"]. 
                                       "<br>City: " . $row["city"].
                                       "<br>Account Balance: $" . $row["accountBalance"];
                                 }
                           } 
                           else {
-                                echo "<span style='padding-top: 200px;'> No records has been found <input type='button' value='Go back' onclick='history.back()''>";
+                                echo "<span style='padding-top: 200px;'> No records has been found <br><input type='button' value='Go back' onclick='history.back()''>";
                           }
                 }
                 else {
-                    echo "<span style='padding-top: 200px;'> Password is incorrect. <input type='button' value='Go back' onclick='history.back()''>";
+                    echo "<span style='padding-top: 200px;'> Password is incorrect. <br><input type='button' value='Go back' onclick='history.back()''>";
                 }
 
                 break;
@@ -190,17 +190,17 @@
     
                         if ($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc()) {
-                                        echo "Username: " . $row["username"]. "<br>First Name: " 
+                                        echo "<span style='padding-top: 200px;'> Username: " . $row["username"]. "<br>First Name: " 
                                         . $row["firstName"]. "<br>Last Name:" . $row["lastName"]. 
                                         "<br>City: " . $row["city"];
                                     }
                               } 
                               else {
-                                    echo "<span style='padding-top: 200px;'> No records has been found <input type='button' value='Go back' onclick='history.back()''>";
+                                    echo "<span style='padding-top: 200px;'> No records has been found <br><input type='button' value='Go back' onclick='history.back()''>";
                               }
                     }
                     else {
-                        echo "<span style='padding-top: 200px;'> Password is incorrect. <input type='button' value='Go back' onclick='history.back()''>";
+                        echo "<span style='padding-top: 200px;'> Password is incorrect. <br><input type='button' value='Go back' onclick='history.back()''>";
                     }
     
                     break;
