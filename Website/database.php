@@ -79,7 +79,7 @@
 
                 if ($result) {
                     if (mysqli_num_rows($result) > 0) {
-                        echo 'Username Already Used!';
+                        echo '<span style="padding-top: 200px;"> Username Already Used! <br>';
                     } else {
                         $sql = 'INSERT INTO users(firstName, lastName, city, pHash, username) 
                         VALUES (?,?,?,?,?)';
@@ -111,7 +111,7 @@
 
                 if ($result) {
                     if (mysqli_num_rows($result) > 0) {
-                        echo 'Username Already Used!';
+                        echo '<span style="padding-top: 200px;"> Username Already Used! <br>';
                     } else {
             
                         $sql = 'INSERT INTO donors(firstName, lastName, city, pHash, username) 
@@ -158,11 +158,11 @@
                                 }
                           } 
                           else {
-                                echo "No records has been found <input type='button' value='Go back' onclick='history.back()''>";
+                                echo "<span style='padding-top: 200px;'> No records has been found <input type='button' value='Go back' onclick='history.back()''>";
                           }
                 }
                 else {
-                    echo "Password is incorrect. <input type='button' value='Go back' onclick='history.back()''>";
+                    echo "<span style='padding-top: 200px;'> Password is incorrect. <input type='button' value='Go back' onclick='history.back()''>";
                 }
 
                 break;
@@ -196,11 +196,11 @@
                                     }
                               } 
                               else {
-                                    echo "No records has been found <input type='button' value='Go back' onclick='history.back()''>";
+                                    echo "<span style='padding-top: 200px;'> No records has been found <input type='button' value='Go back' onclick='history.back()''>";
                               }
                     }
                     else {
-                        echo "Password is incorrect. <input type='button' value='Go back' onclick='history.back()''>";
+                        echo "<span style='padding-top: 200px;'> Password is incorrect. <input type='button' value='Go back' onclick='history.back()''>";
                     }
     
                     break;
