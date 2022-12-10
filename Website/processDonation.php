@@ -42,8 +42,8 @@
 // database connection code
 // $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
 
-$con = mysqli_connect('localhost', 'root', '','cornersidehelp');
-//$con = mysqli_connect('localhost', 'cornersidehelper', 'CShlp41^23','cornersidehelp'); // serrver
+//$con = mysqli_connect('localhost', 'root', '','cornersidehelp');
+$con = mysqli_connect('localhost', 'cornersidehelper', 'CShlp41^23','cornersidehelp'); // serrver
 //mysql credentials = root
 $emptyField = "";
 
