@@ -24,6 +24,8 @@
 				<a href="Sponsors.html">Sponsors</a>
 				<a href="Donate.html">Donate</a>
 				<a href="LogIn.html">Log In</a>
+				<a href="CreateUser.html">Create Account</a>
+				<a href="About.html">About</a>
 			</span>
 		</div>
 		
