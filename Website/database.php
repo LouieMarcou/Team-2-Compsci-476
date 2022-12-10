@@ -26,9 +26,6 @@
         <div>
 <?php
 
-    //ALTER TABLE users
-    //MODIFY COLUMN ID INTEGER NOT NULL AUTO_INCREMENT;
-
     try{
         $db = mysqli_connect('localhost', 'root', '', 'cornersidehelp', '4306');
     }
