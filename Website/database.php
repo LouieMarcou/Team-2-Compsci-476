@@ -29,7 +29,7 @@
 <?php
 
     try{
-        $db = mysqli_connect('localhost', 'root', '', 'cornersidehelp', '4306');
+        $db = mysqli_connect('localhost', 'root', '', 'cornersidehelp');
     }
     catch(mysqli_sql_exception $e) {
         echo "Error!: " . $e->getmessage() . "<br>";
@@ -67,12 +67,13 @@
                 break;
 
             case 'createUser':
-                if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['city'])) {
+                if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['city']) && isset($_POST['shelterID'])) {
                     $username = $_POST['username'];
                     $password = $_POST['password'];
                     $firstName = $_POST['firstName'];
                     $lastName = $_POST['lastName'];
                     $city = $_POST['city'];
+                    $shelter = $_POST['shelterID'];
                 }
 
                 $sqlUserNameCheck = "SELECT * FROM users WHERE username = '$username'";
@@ -83,15 +84,15 @@
                     if (mysqli_num_rows($result) > 0) {
                         echo 'Username Already Used!';
                     } else {
-                        $sql = 'INSERT INTO users(firstName, lastName, city, pHash, username) 
-                        VALUES (?,?,?,?,?)';
+                        $sql = 'INSERT INTO users(firstName, lastName, city, shelterID, pHash, username) 
+                        VALUES (?,?,?,?,?,?)';
 
                         $pepper = get_cfg_var("pepper"); //grabs pepper variable from config file
                         $pwd_peppered = hash_hmac("sha256", $password, $pepper); //Generates  a keyed hash value using the HMAC method
                         $pwd_hashed = password_hash($pwd_peppered, PASSWORD_ARGON2ID); //hashes the password using Argon2ID hashing algorithm
                         
                         $stmt = $db->prepare($sql);
-                        $stmt->bind_param('sssss', $firstName, $lastName, $city, $pwd_hashed, $username);
+                        $stmt->bind_param('ssssss', $firstName, $lastName, $city, $shelter, $pwd_hashed, $username);
                         $stmt->execute();
                     }
                 }
