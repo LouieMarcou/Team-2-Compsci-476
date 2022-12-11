@@ -11,13 +11,36 @@
 			window.addEventListener("load", function () {
 				const buttons = document.querySelectorAll("input[type='radio']");
 				var form = document.getElementById('userInfo');
+				var shelter_input = document.getElementById("inputs");
 
 				buttons.forEach(button => {
   					button.onclick = () => {
+						while (shelter_input.hasChildNodes()) {
+            				shelter_input.removeChild(shelter_input.firstChild);
+        				}
+
   				  		if (button.value == "donor") {
-							form.action = "database.php?mode=createDonor"
-  				    		alert(button.value + " account!");
-  				  		}
+							form.action = "database.php?mode=createDonor";
+							//alert(button.value + " account!");
+  				  		} else{
+							const shelter = document.createElement("select");
+    						var linebreak = document.createElement("br");
+							var shelter_list = ["Other", "St. Elizabeth's", "Whitewater Halfway House"];
+							
+
+							for (let i = 0; i < shelter_list.length; i++){
+								var option = document.createElement("option");
+								option.innerHTML = shelter_list[i];
+								option.value = i;
+
+								shelter.appendChild(option);
+							}
+
+							shelter.setAttribute("class", "form-control")
+							shelter.setAttribute("name", "shelterID")
+							shelter_input.appendChild(shelter);
+							shelter_input.appendChild(linebreak);
+						}
   					}
 				});
 			});
@@ -46,7 +69,7 @@
 			<form id = "userInfo" name = 'userLoginForm' method="post" action="database.php?mode=createUser">
     	        <h3 id="create-user-title">Enter in information for your account</h3>
 				<input type="radio" id="acccount1"
-    			 name="accountType" value="user">
+    			 name="accountType" value="user" required>
     			<label for="account1">User</label>
 				
     			<input type="radio" id="account2"
@@ -64,10 +87,15 @@
     	        <!-- Need Select of shelters -->
     	        <input type="text" class="form-control" name="city"
     	        placeHolder="City" required><br>
+				
+				<a id = "inputs">
+					
+				</a>
 				<input type="submit" id = "userCreate-button" value="Submit">
     	    </form>
     	</div>
 	</center>
 	</body>
+
 	
 </html>
