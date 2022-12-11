@@ -10,9 +10,11 @@
 		
 		<script>
 
-			function makeVerify(){
+			window.addEventListener("load", function () {
 				var donation = parseFloat(document.getElementById("donation").value);
 				document.getElementById("verify").addEventListener("click", function () {
+					var donation = parseFloat(document.getElementById("donation").value);
+
 					alert("Be sure to double check the amount you want to donate.\nYou will be donating $" + donation+ " \nIf this is correct select the Submit button below");
 
 					var verify = document.getElementById("verifybtn");
@@ -23,7 +25,7 @@
 					button.name = "button";
 					verify.appendChild(button);
 				});
-			}
+			})
 
 		</script>
 		
@@ -40,6 +42,8 @@
 				<a href="Sponsors.html">Sponsors</a>
 				<a href="Donate.html">Donate</a>
 				<a href="LogIn.html">Log In</a>
+				<a href="CreateUser.html">Create Account</a>
+				<a href="About.html">About</a>
 			</span>
 		</div>
 		
@@ -50,7 +54,7 @@
 		<form name = "donateForm" method="post" action="processDonation.php">
 			<div class = "donateInfo">
 				<label for="userID" style="padding-left: 30px;">ID of Person to recieve donation:</label>
-				<input name = "userID" type="text" id="userID" maxlength="5" size="30"  placeholder="Enter in ID">
+				<input name = "userID" type="text" id="userID" maxlength="5" size="30"  placeholder="Enter in ID" autofocus>
 			</div>
 
 			<div class = "donateInfo">
@@ -78,7 +82,7 @@
 
 			<div style="text-align:center; padding-bottom: 50px;">
 				<!-- <input type="submit" id = "stripe-button" value="Submit"> -->
-				<button id = "verify" type = "button" onclick= "makeVerify()">Verify</button>
+				<button id = "verify" type = "button">Verify</button>
 			</div>
 
 			<div style="text-align:center;" id = "verifybtn">
