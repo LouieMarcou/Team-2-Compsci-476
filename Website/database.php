@@ -29,7 +29,7 @@
 <?php
 
     try{
-        $db = mysqli_connect('localhost', 'root', '', 'cornersidehelp', '4306');
+        $db = mysqli_connect('localhost', 'root', '', 'cornersidehelp');
     }
     catch(mysqli_sql_exception $e) {
         echo "Error!: " . $e->getmessage() . "<br>";
