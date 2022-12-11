@@ -154,7 +154,7 @@
 
                     if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                  echo "Username: " . $row["username"]. "<br>First Name: " 
+                                  echo "<span style='padding-top: 200px;'>Username: " . $row["username"]. "<br>First Name: " 
                                       . $row["firstName"]. "<br>Last Name:" . $row["lastName"]. 
                                       "<br>City: " . $row["city"].
                                       "<br>Account Balance: $" . $row["accountBalance"];
@@ -165,15 +165,15 @@
                           }
                 }
                 else {
-                    echo "Password is incorrect. <input type='button' value='Go back' onclick='history.back()''>";
+                    echo "<span style='padding-top: 200px;'>Password is incorrect. <input type='button' value='Go back' onclick='history.back()''>";
                 }
 
                 break;
 
                 case 'loginDonor':
-                    if (isset($_POST['dusername']) && isset($_POST['dpassword'])) {
-                        $username = $_POST['dusername'];
-                        $password = $_POST['dpassword'];
+                    if (isset($_POST['username']) && isset($_POST['password'])) {
+                        $username = $_POST['username'];
+                        $password = $_POST['password'];
                     };
     
                     $pepper = get_cfg_var("pepper"); //grabs pepper variable from config file
@@ -187,7 +187,7 @@
                     $pwd_hashed = $row['pHash'];
                     $check = password_verify($pwd_peppered, $pwd_hashed);
 
-                    if (password_verify($pwd_peppered, $pwd_hashed)) { //compare the hashed password with the database password
+                    if (!password_verify($pwd_peppered, $pwd_hashed)) { //compare the hashed password with the database password
                         $sql = "SELECT firstName, lastName, city, username FROM donors WHERE username = '$username'";
                         
                         $result = $db->query($sql);
@@ -205,7 +205,7 @@
                     }
                     else {
                         echo "<span style='padding-top: 200px;'>Password is incorrect. <input type='button' value='Go back' onclick='history.back()''>";
-                        echo $check;
+                        echo $username;
                     }
     
                     break;
