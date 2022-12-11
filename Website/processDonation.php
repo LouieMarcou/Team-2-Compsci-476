@@ -120,7 +120,7 @@ else{
 	$username_result = mysqli_query($con, $sql_username); //send query
 	$username_num = mysqli_num_rows($username_result);// check rows, if zero no results found
 
-	if ($donorname_num == 0 && !checkGuest($guest)) { //and check password
+	if ($donorname_num == 0 && checkGuest($guest)) { //and check password
 		echo '<span style="padding-top: 200px;"> Username not recognized please try again<br>';
 	} 
 	else if ($username_num == 0) { 
