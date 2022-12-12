@@ -200,12 +200,11 @@
                                     }
                               } 
                               else {
-                                    echo "No records has been found <input type='button' value='Go back' onclick='history.back()''>";
+                                    echo "<span style='padding-top: 200px;'>No records has been found <input type='button' value='Go back' onclick='history.back()''>";
                               }
                     }
                     else {
                         echo "<span style='padding-top: 200px;'>Password is incorrect. <input type='button' value='Go back' onclick='history.back()''>";
-                        echo $username;
                     }
     
                     break;
