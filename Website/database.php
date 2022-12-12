@@ -147,7 +147,7 @@
                 $row = $sql_pwd_hashed->fetch_assoc(); //fetch the sql pHash of username
                 $pwd_hashed = $row['pHash'];
 
-                if (!password_verify($pwd_peppered, $pwd_hashed)) { //compare the hashed password with the database password
+                if (password_verify($pwd_peppered, $pwd_hashed)) { //compare the hashed password with the database password
                     $sql = "SELECT firstName, lastName, accountBalance, city, username FROM users WHERE username = '$username'";
                     
                     $result = $db->query($sql);
@@ -187,7 +187,7 @@
                     $pwd_hashed = $row['pHash'];
                     $check = password_verify($pwd_peppered, $pwd_hashed);
 
-                    if (!password_verify($pwd_peppered, $pwd_hashed)) { //compare the hashed password with the database password
+                    if (password_verify($pwd_peppered, $pwd_hashed)) { //compare the hashed password with the database password
                         $sql = "SELECT firstName, lastName, city, username FROM donors WHERE username = '$username'";
                         
                         $result = $db->query($sql);
