@@ -82,7 +82,7 @@
 
                 if ($result) {
                     if (mysqli_num_rows($result) > 0) {
-                        echo 'Username Already Used!';
+                        echo "<span style='padding-top: 200px;'>Username Already Used!";
                     } else {
                         $sql = 'INSERT INTO users(firstName, lastName, city, shelterID, pHash, username) 
                         VALUES (?,?,?,?,?,?)';
@@ -115,7 +115,7 @@
 
                 if ($result) {
                     if (mysqli_num_rows($result) > 0) {
-                        echo 'Username Already Used!';
+                        echo "<span style='padding-top: 200px;'>Username Already Used!";
                     } else {
             
                         $sql = 'INSERT INTO donors(firstName, lastName, city, pHash, username) 
