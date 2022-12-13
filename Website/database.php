@@ -94,6 +94,7 @@
                         $stmt = $db->prepare($sql);
                         $stmt->bind_param('ssssss', $firstName, $lastName, $city, $shelter, $pwd_hashed, $username);
                         $stmt->execute();
+                        echo "<span style='padding-top: 200px;'> User account created! ";
                     }
                 }
         
@@ -127,6 +128,7 @@
                         $stmt = $db->prepare($sql);
                         $stmt->bind_param('sssss', $firstName, $lastName, $city, $pwd_hashed, $username);
                         $stmt->execute();
+                        echo "<span style='padding-top: 200px;'> Donor account created! ";
                     }
                 }
                 break;
