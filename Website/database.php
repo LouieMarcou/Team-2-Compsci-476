@@ -162,7 +162,7 @@
                 $pwd_hashed = $row['pHash'];
 
                 if (password_verify($pwd_peppered, $pwd_hashed)) { //compare the hashed password with the database password
-                    $sql = "SELECT firstName, lastName, accountBalance, city, username FROM users WHERE username = '$username'";
+                    $sql = "SELECT userID, firstName, lastName, accountBalance, city, username FROM users WHERE username = '$username'";
                     
                     $result = $db->query($sql);
 
@@ -171,6 +171,7 @@
                                     echo "<span style='padding-top: 200px;'>
                                     <h1>Welcome Back " . $row['firstName']. "!".
                                     "<p class= 'description' >Username: </p>" . "<p class= 'answers'>". $row["username"].
+                                    "<p class= 'description' >User ID: </p>" . "<p class= 'answers'>". $row["userID"].
                                     "<br><p class= 'description' >First Name: </p>" . "<p class= 'answers'>" . $row["firstName"].
                                     "<br><p class= 'description' >Last Name: </p>" . "<p class= 'answers'>" . $row["lastName"]. 
                                     "<br><p class= 'description' >City: </p>" . "<p class= 'answers'>" . $row["city"].
