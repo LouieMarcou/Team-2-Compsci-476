@@ -18,6 +18,9 @@
 					alert("Be sure to double check the amount you want to donate.\nYou will be donating $" + donation+ " \nIf this is correct select the Submit button below");
 
 					var verify = document.getElementById("verifybtn");
+					while (verify.hasChildNodes()) { //
+            				verify.removeChild(verify.firstChild);
+        				}
 
 					const button = document.createElement("button");
 					button.innerText = "Submit";

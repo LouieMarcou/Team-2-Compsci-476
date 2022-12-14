@@ -26,6 +26,16 @@
 			</span>
 		</div>
         <div>
+            <style>
+                .answers {
+                    color: #5A5A5A;
+                    font-size: 20px;
+                }
+                .description {
+                    color: #000000;
+                    font-size: 30px;
+                }
+            </style>
 <?php
 
     try{
@@ -82,7 +92,7 @@
 
                 if ($result) {
                     if (mysqli_num_rows($result) > 0) {
-                        echo 'Username Already Used!';
+                        echo '<span style="padding-top: 200px;"> Username Already Used! <br>';
                     } else {
                         $sql = 'INSERT INTO users(firstName, lastName, city, shelterID, pHash, username) 
                         VALUES (?,?,?,?,?,?)';
@@ -94,6 +104,8 @@
                         $stmt = $db->prepare($sql);
                         $stmt->bind_param('ssssss', $firstName, $lastName, $city, $shelter, $pwd_hashed, $username);
                         $stmt->execute();
+
+                        echo "<span style='padding-top: 200px;'> User Created! <br><input type='button' value='Go back' onclick='history.back()''";
                     }
                 }
         
@@ -114,7 +126,7 @@
 
                 if ($result) {
                     if (mysqli_num_rows($result) > 0) {
-                        echo 'Username Already Used!';
+                        echo '<span style="padding-top: 200px;"> Username Already Used! <br>';
                     } else {
             
                         $sql = 'INSERT INTO donors(firstName, lastName, city, pHash, username) 
@@ -127,6 +139,8 @@
                         $stmt = $db->prepare($sql);
                         $stmt->bind_param('sssss', $firstName, $lastName, $city, $pwd_hashed, $username);
                         $stmt->execute();
+
+                        echo "<span style='padding-top: 200px;'> Donor Created! <br><input type='button' value='Go back' onclick='history.back()''";
                     }
                 }
                 break;
@@ -154,18 +168,21 @@
 
                     if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                  echo "Username: " . $row["username"]. "<br>First Name: " 
-                                      . $row["firstName"]. "<br>Last Name:" . $row["lastName"]. 
-                                      "<br>City: " . $row["city"].
-                                      "<br>Account Balance: $" . $row["accountBalance"];
+                                    echo "<span style='padding-top: 200px;'>
+                                    <h1>Welcome Back " . $row['firstName']. "!".
+                                    "<p class= 'description' >Username: </p>" . "<p class= 'answers'>". $row["username"].
+                                    "<br><p class= 'description' >First Name: </p>" . "<p class= 'answers'>" . $row["firstName"].
+                                    "<br><p class= 'description' >Last Name: </p>" . "<p class= 'answers'>" . $row["lastName"]. 
+                                    "<br><p class= 'description' >City: </p>" . "<p class= 'answers'>" . $row["city"].
+                                    "<br><p class= 'description' >Account Balance: " . "<p class= 'answers'>" . "$". $row["accountBalance"];
                                 }
                           } 
                           else {
-                                echo "No records has been found <input type='button' value='Go back' onclick='history.back()''>";
+                                echo "<span style='padding-top: 200px;'> No records has been found <br><input type='button' value='Go back' onclick='history.back()''>";
                           }
                 }
                 else {
-                    echo "Password is incorrect. <input type='button' value='Go back' onclick='history.back()''>";
+                    echo "<span style='padding-top: 200px;'> Password is incorrect. <br><input type='button' value='Go back' onclick='history.back()''>";
                 }
 
                 break;
@@ -185,7 +202,8 @@
     
                     $row = $sql_pwd_hashed->fetch_assoc(); //fetch the sql pHash of username
                     $pwd_hashed = $row['pHash'];
-    
+                    $check = password_verify($pwd_peppered, $pwd_hashed);
+
                     if (password_verify($pwd_peppered, $pwd_hashed)) { //compare the hashed password with the database password
                         $sql = "SELECT firstName, lastName, city, username FROM donors WHERE username = '$username'";
                         
@@ -193,17 +211,20 @@
     
                         if ($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc()) {
-                                        echo "Username: " . $row["username"]. "<br>First Name: " 
-                                        . $row["firstName"]. "<br>Last Name:" . $row["lastName"]. 
-                                        "<br>City: " . $row["city"];
+                                        echo "<span style='padding-top: 200px;'>
+                                        <h1>Welcome Back " . $row['firstName']. "!".
+                                        "<p class= 'description' >Username: </p>" . "<p class= 'answers'>". $row["username"] . 
+                                        "<br><p class= 'description' >First Name: </p>" . "<p class= 'answers'>" . $row["firstName"]. 
+                                        "<br><p class= 'description' >Last Name: </p>" . "<p class= 'answers'>" . $row["lastName"]. 
+                                        "<br><p class= 'description' >City: </p>" . "<p class= 'answers'>" . $row["city"];
                                     }
                               } 
                               else {
-                                    echo "No records has been found <input type='button' value='Go back' onclick='history.back()''>";
+                                    echo "<span style='padding-top: 200px;'> No records has been found <br><input type='button' value='Go back' onclick='history.back()''>";
                               }
                     }
                     else {
-                        echo "Password is incorrect. <input type='button' value='Go back' onclick='history.back()''>";
+                        echo "<span style='padding-top: 200px;'> Password is incorrect. <br><input type='button' value='Go back' onclick='history.back()''>";
                     }
     
                     break;

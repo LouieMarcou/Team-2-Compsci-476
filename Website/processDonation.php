@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<!-- for the confirm button -->
 	
 		<meta charset="utf-8" />
 		<title>Corner Side Help</title>
@@ -16,8 +15,7 @@
 
 		<div class="links">
 			<span style="display:inline-block;">
-				<!--<p style="font-size:3vw; text-align:left; float:left;"> Corner Side Help</p>-->
-				<img src="Pictures/Cornerside_Logo_Nov_16th_(002).png" width="20%">
+			<img src="Pictures/Cornerside_Logo_Nov_16th_(002).png" width="20%">
 			</span>
 			<span style="float:right; font-size:2vw; margin-right:25px;">
 				<a href="index.html">Home</a>
@@ -28,25 +26,13 @@
 				<a href="About.html">About</a>
 			</span>
 		</div>
-		
-		
-	
-	<?php
-		//echo '<script type="text/javascript">
-     //  window.onload = function () { alert("Is this the amonut you want to donate?"); } 
-		//</script>'; 
-		//?>
 
 <?php
-// include 'payProcess.php';
 //Dummy username: cornersidehelper
 //Dummy password: CShlp41^23
 // database connection code
-// $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
-
 $con = mysqli_connect('localhost', 'root', '','cornersidehelp');
-//$con = mysqli_connect('localhost', 'cornersidehelper', 'CShlp41^23','cornersidehelp'); // serrver
-//mysql credentials = root
+//$con = mysqli_connect('localhost', 'cornersidehelper', 'CShlp41^23','cornersidehelp'); // server
 $emptyField = "";
 
 // get the post records
@@ -120,8 +106,16 @@ else{
 	$username_result = mysqli_query($con, $sql_username); //send query
 	$username_num = mysqli_num_rows($username_result);// check rows, if zero no results found
 
-	if ($donorname_num == 0 && checkGuest($guest)) { //and check password
-		echo '<span style="padding-top: 200px;"> Username not recognized please try again<br>';
+
+	$pepper = get_cfg_var("pepper"); //grabs pepper variable from config file
+    $pwd_peppered = hash_hmac("sha256", $password, $pepper); //Generates  a keyed hash value using the HMAC method using the password revceived from login
+    $sqlPassword = "SELECT pHash FROM users WHERE username = '$username'";
+    $sql_pwd_hashed = $con->query($sqlPassword); 
+    $row = $sql_pwd_hashed->fetch_assoc(); //fetch the sql pHash of username
+    $pwd_hashed = $row['pHash'];
+
+	if (($donorname_num == 0 || !password_verify($pwd_peppered, $pwd_hashed)) && checkGuest($guest)) { //and check password
+		echo '<span style="padding-top: 200px;"> Username not recognized please try again or password incorrect<br>';
 	} 
 	else if ($username_num == 0) { 
 		echo '<span style="padding-top: 200px;"> The User ID entered does not exist in database <br>';
