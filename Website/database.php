@@ -26,6 +26,16 @@
 			</span>
 		</div>
         <div>
+            <style>
+                .answers {
+                    color: #5A5A5A;
+                    font-size: 20px;
+                }
+                .description {
+                    color: #000000;
+                    font-size: 30px;
+                }
+            </style>
 <?php
 
     try{
@@ -94,6 +104,8 @@
                         $stmt = $db->prepare($sql);
                         $stmt->bind_param('ssssss', $firstName, $lastName, $city, $shelter, $pwd_hashed, $username);
                         $stmt->execute();
+
+                        echo "<span style='padding-top: 200px;'> User Created! <br><input type='button' value='Go back' onclick='history.back()''";
                     }
                 }
         
@@ -127,6 +139,8 @@
                         $stmt = $db->prepare($sql);
                         $stmt->bind_param('sssss', $firstName, $lastName, $city, $pwd_hashed, $username);
                         $stmt->execute();
+
+                        echo "<span style='padding-top: 200px;'> Donor Created! <br><input type='button' value='Go back' onclick='history.back()''";
                     }
                 }
                 break;
@@ -154,10 +168,13 @@
 
                     if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                  echo "<span style='padding-top: 200px;'> Username: " . $row["username"]. "<br>First Name: " 
-                                      . $row["firstName"]. "<br>Last Name:" . $row["lastName"]. 
-                                      "<br>City: " . $row["city"].
-                                      "<br>Account Balance: $" . $row["accountBalance"];
+                                    echo "<span style='padding-top: 200px;'>
+                                    <h1>Welcome Back " . $row['firstName']. "!".
+                                    "<p class= 'description' >Username: </p>" . "<p class= 'answers'>". $row["username"].
+                                    "<br><p class= 'description' >First Name: </p>" . "<p class= 'answers'>" . $row["firstName"].
+                                    "<br><p class= 'description' >Last Name: </p>" . "<p class= 'answers'>" . $row["lastName"]. 
+                                    "<br><p class= 'description' >City: </p>" . "<p class= 'answers'>" . $row["city"].
+                                    "<br><p class= 'description' >Account Balance: " . "<p class= 'answers'>" . "$". $row["accountBalance"];
                                 }
                           } 
                           else {
@@ -193,9 +210,12 @@
     
                         if ($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc()) {
-                                        echo "<span style='padding-top: 200px;'> Username: " . $row["username"]. "<br>First Name: " 
-                                        . $row["firstName"]. "<br>Last Name:" . $row["lastName"]. 
-                                        "<br>City: " . $row["city"];
+                                        echo "<span style='padding-top: 200px;'>
+                                        <h1>Welcome Back " . $row['firstName']. "!".
+                                        "<p class= 'description' >Username: </p>" . "<p class= 'answers'>". $row["username"] . 
+                                        "<br><p class= 'description' >First Name: </p>" . "<p class= 'answers'>" . $row["firstName"]. 
+                                        "<br><p class= 'description' >Last Name: </p>" . "<p class= 'answers'>" . $row["lastName"]. 
+                                        "<br><p class= 'description' >City: </p>" . "<p class= 'answers'>" . $row["city"];
                                     }
                               } 
                               else {
