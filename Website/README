@@ -1,0 +1,54 @@
+For this project we have built a website to simulate the functions of what the client (Cornerside Help) would like to ultimately accomplish. In essence, provide a system where people can, using only a number or some other simple identifier, donate to a homeless person. The client identifies the issue of if you simply hand someone money they could use it for things other than survival needs. To combat this need, the client would like to implement a system that people can donate to and a homeless person can access where they can use donated funds in exchange for food or services (i.e. shelter). The client had no formal business plan in place so the webiste we built is a simulation of the desired system. The goal of this is to provide a framework for the project to begin building on.
+
+Clarity note:
+From this point on "users" will be in reference the homeless people who would use this system to receive donations. "Donors" will reference those who donate to users.
+
+The database:
+The pages on this project work off of 4 tables users, donors, reciepts, and shelters. They have the follwing characteristics
+
+users:
+1	userID Primary	int(11)		AUTO_INCREMENT
+2	firstName	varchar(255)	utf8mb4_general_ci
+3	lastName	varchar(255)	utf8mb4_general_ci
+4	accountBalance	float
+5	city	varchar(30)	utf8mb4_general_ci
+6	shelterID	int(11)	
+7	pHash	varchar(255)	utf8mb4_general_ci	
+8	username	varchar(255)	utf8mb4_general_ci
+
+Donors:
+1	donorID Primary	int(11)	AUTO_INCREMENT	
+2   username	varchar(255)	utf8mb4_general_ci	
+3	firstName	varchar(20)	utf8mb4_general_ci
+4	lastName	varchar(30)	utf8mb4_general_ci	
+5	city	varchar(30)	utf8mb4_general_ci
+6	pHash	varchar(255)	utf8mb4_general_ci
+
+Receipts:
+1	receiptID Primary	int(11)	AUTO_INCREMENT
+2	userID	int(11)
+3	donorID	int(11)
+4	amount	int(11)
+
+Shelters:
+1	shelterID Primary	int(11)	AUTO_INCREMENT
+2	shelterName	varchar(255)	utf8mb4_general_ci
+3	address	varchar(255)	utf8mb4_general_ci
+4	city	varchar(255)	utf8mb4_general_ci
+5	state	varchar(255)	utf8mb4_general_ci
+6	zipcode	int(11)
+
+The website is straight forward as far as funtionality, there are several pages each of which I'll describe:
+
+Home / index.html:
+This is where a user or donor will find themselves when they enter the website. On this page is general background information about Cornerside Help. The client expressed interest in a "map" feature to show the locations of shelters or businesses where users can access their funds or business that are participating with Cornersidehelp. This simply collects geographic metadata and displays a map, since Cornerside Help does not have any businesses presently participating it is just there to represent where it "should" be. There is a "How to Help" button that links to the about page.
+
+Sponsors / Sponsors.html:
+This page is to simulate when the company does take off if Cornerside help acquires sponsors where their information can be found.
+
+Donate / Donate.html:
+This page is for a donor to use
+
+About / About.html:
+This page has a graphic provided by the client on the "5 steps" of helping.
+

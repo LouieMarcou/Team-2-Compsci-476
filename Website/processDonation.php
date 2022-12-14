@@ -109,13 +109,14 @@ else{
 
 	$pepper = get_cfg_var("pepper"); //grabs pepper variable from config file
     $pwd_peppered = hash_hmac("sha256", $password, $pepper); //Generates  a keyed hash value using the HMAC method using the password revceived from login
-    $sqlPassword = "SELECT pHash FROM users WHERE username = '$username'";
+    $sqlPassword = "SELECT pHash FROM donors WHERE username = '$donor'";
     $sql_pwd_hashed = $con->query($sqlPassword); 
     $row = $sql_pwd_hashed->fetch_assoc(); //fetch the sql pHash of username
-    $pwd_hashed = $row['pHash'];
+    $donospass_found = mysqli_fetch_array($sql_pwd_hashed);
+	$pwd_hashed = $donospass_found[0];
 
-	if (($donorname_num == 0 || !password_verify($pwd_peppered, $pwd_hashed)) && checkGuest($guest)) { //and check password
-		echo '<span style="padding-top: 200px;"> Username not recognized please try again or password incorrect<br>';
+	if (($donorname_num == 0 || !password_verify($pwd_peppered, $pwd_hashed)) && !checkGuest($guest)) { //and check password
+		echo '<span style="padding-top: 200px;"> Username not recognized please or password incorrect, try again<br>';
 	} 
 	else if ($username_num == 0) { 
 		echo '<span style="padding-top: 200px;"> The User ID entered does not exist in database <br>';
