@@ -138,7 +138,7 @@ else{
 		}
 		
 		$row = mysqli_fetch_array($username_result); //makes the result an array
-		echo '<span style="padding-top: 200px;">You donated ' . $donation . ' To ' . $row[0] . " " . $row[1];
+		echo '<span style="padding-top: 200px;">You donated $' . $donation . ' To ' . $row[0] . " " . $row[1];
 		
 		//get account balance
 		$sql_userAccountBal = "SELECT accountBalance FROM users WHERE userID = '$userID'";
