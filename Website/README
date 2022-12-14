@@ -3,6 +3,9 @@ For this project we have built a website to simulate the functions of what the c
 Clarity note:
 From this point on "users" will be in reference the homeless people who would use this system to receive donations. "Donors" will reference those who donate to users.
 
+Passwords:
+Passwords are stored on the db and we use hashing to keep them safe. The hash key is stored on config.conf
+
 The database:
 The pages on this project work off of 4 tables users, donors, reciepts, and shelters. They have the follwing characteristics
 
@@ -47,8 +50,22 @@ Sponsors / Sponsors.html:
 This page is to simulate when the company does take off if Cornerside help acquires sponsors where their information can be found.
 
 Donate / Donate.html:
-This page is for a donor to use
+This page is for a donor to use. They enter in the ID of a user they want to donate to. Enter the amount. There is a guest checkbox that allows a donor to checkout anonomously. This is where the API of the donation soltution API would take them to a place to enter their information, but since one isn't possible presently it simply allows a donor to not enter in any more information. Otherwise, the donor must enter in their credentials. The page uses Javascript event listener for when the donor selects the "Verify" button, this generates a pop up allowing the donor to double check their information and donation is correct. It then generates a submit button. This page posts to processDonation.php.
+
+processDonation.php:
+This donation information is processed here. First, the donors credentials are checked, then the program makes sure the userID entered exists. If everythign check out the users account balance is updated, and a receipt is generated with the information from the donation.
+
+Log In / LogIn.html:
+This page has two login boxes one for users, titled "members" and the other for donors. This posts to database.php, upon credential check the database.php displays the information of whoever logged in.
+
+Create Account / CreateUser.html:
+This page takes information from either a user or donor to create an account on the database. It uses Javascript event listener for when either the user or donor radio buttons is selected. If user is selected it generates a dropdown menu with a list of the shelters on the "network" or provides an "other" option if none apply. This page also posts to database.php
+
+database.php:
+This page does most of the heavy lifting both handling account creation and account log ons. Most of its functionality is described on the pages above. In essence, it handles the back end processes of account creation and log on.
 
 About / About.html:
 This page has a graphic provided by the client on the "5 steps" of helping.
 
+
+There was some attempts to use an API, namely Stripe API. Unfortunatly without a business model or a real business they would not let us use or store informatio with them. In spite of this we did discover some information about how to use it, regardless of us not actually implementing it. The Stripe API uses the Stripe CLI to communicate with the server. create_price.php shows how this process work, effectively the API builds a json object to store information about purchases. The composor.json, composer.lock and everything in the vendor folder all come from the attempted implementation, but ultimately do nothing for the present state of the website.
